@@ -1,0 +1,1 @@
+<h1>trang nhập thông tin</h1>
