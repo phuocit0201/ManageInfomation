@@ -1,14 +1,12 @@
 <?php
-    class errors extends controller
+class errors extends controller
+{
+    public function __construct()
     {
-        public function __construct()
-        {
-        }
-        
-        public function error404()
-        {
-            $this->view('error/404');
-        }
-        
     }
-?>
+
+    public function error404()
+    {
+        $this->view('error/404');
+    }
+}

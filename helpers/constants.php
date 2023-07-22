@@ -1,4 +1,4 @@
-<?php 
+<?php
 // chỉ được sửa những value text sau dấu " => " này
 const MANAGE = [
     'title' => 'Quản Lý Hồ Sơ',
@@ -46,4 +46,3 @@ const STATUS_MANAGE = [
         'value' => 2
     ],
 ];
-?>

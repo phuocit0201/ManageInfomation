@@ -8,4 +8,3 @@ foreach ($folders as $folder) {
 }
 date_default_timezone_set(timezone);
 $main = new main();
-?>

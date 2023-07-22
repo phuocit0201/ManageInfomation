@@ -9,4 +9,3 @@ class Users extends Database
         $this->model = $this->table;
     }
 }
-?>

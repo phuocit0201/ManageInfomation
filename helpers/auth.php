@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once './helpers/controller.php';
 class Auth extends controller
 {
@@ -13,7 +13,7 @@ class Auth extends controller
         if (isset($_SESSION[$guard])) {
             $userModel = controller::model('users');
             $user =  $userModel->find([
-                'id' => $_SESSION[$guard], 
+                'id' => $_SESSION[$guard],
                 'active' => ACTIVE_ACCOUNT['unbanned'],
             ]);
             if (empty($user)) {
@@ -26,7 +26,8 @@ class Auth extends controller
         return false;
     }
 
-    public static function attempt($array = [], $guard = 'auth-user') {
+    public static function attempt($array = [], $guard = 'auth-user')
+    {
         $userModel = controller::model('users');
         $user = $userModel->find($array);
 
@@ -38,4 +39,3 @@ class Auth extends controller
         return true;
     }
 }
-?>
