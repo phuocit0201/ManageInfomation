@@ -1,1 +1,1 @@
-<h1>trang nhập thông tin</h1>
+<h1>content</h1>
