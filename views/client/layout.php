@@ -61,8 +61,5 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-<<<<<<< HEAD
 
-=======
->>>>>>> 0b0aea402f15ef00fa88d724b71487992591ae5b
 </html>
