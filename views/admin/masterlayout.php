@@ -102,7 +102,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="admin/" class="nav-link <?php echo ($data['active'] == 1) ? 'active' : '' ?>">
+                            <a href="admin/profile-type" class="nav-link <?php echo ($data['active'] == 1) ? 'active' : '' ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lí Loại Hồ Sơ

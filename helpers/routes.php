@@ -3,7 +3,7 @@ const routes = [
     [
         'path' => '/',
         'controller' => 'home',
-        'action' => 'home',
+        'action' => 'index',
     ],
     [
         'path' => 'admin/profile-type',

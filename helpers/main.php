@@ -29,6 +29,12 @@ class main
         }
         if (method_exists($this->controller, $this->acction)) {
             call_user_func_array([$this->controller, $this->acction], []);
+        } else {
+            $this->controller = 'Errors';
+            require_once "./controllers/" . $this->controller . ".php";
+            $this->controller = new $this->controller;
+            $this->acction = 'error404';
+            call_user_func_array([$this->controller, $this->acction], []);
         }
     }
 }

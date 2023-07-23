@@ -119,7 +119,7 @@
         let id = $(this).attr('profile-type-id')
         $.ajax({
             type: 'GET',
-            url: '<?=base . 'admin/profile-type/show&id='?>' + id
+            url: '<?=base . 'admin/profile-type/show?id='?>' + id
         }).done((res)=>{
             let data = JSON.parse(res);
             if (data.status) {
