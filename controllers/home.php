@@ -20,6 +20,11 @@ class Home extends controller
         $this->view('client/layout', $data);
     }
 
+    public function post()
+    {
+        echo "post";die;
+    }
+
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,73 +1,21 @@
 <?php
-const routes = [
-    [
-        'path' => '/',
-        'controller' => 'home',
-        'action' => 'index',
-    ],
-    [
-        'path' => 'admin/profile-type',
-        'controller' => 'ProfileType',
-        'action' => 'index',
-        'middleware' => 'AdminAuth'
-    ],
-    [
-        'path' => 'admin/profile-type/store',
-        'controller' => 'ProfileType',
-        'action' => 'storeProfileType',
-        'middleware' => 'AdminAuth'
-    ],
-    [
-        'path' => 'admin/profile-type/show',
-        'controller' => 'ProfileType',
-        'action' => 'showProfileType',
-        'middleware' => 'AdminAuth'
-    ],
-    [
-        'path' => 'admin/profile-type/update',
-        'controller' => 'ProfileType',
-        'action' => 'updateProfileType',
-        'middleware' => 'AdminAuth'
-    ],
-    [
-        'path' => 'admin/profile-type/delete',
-        'controller' => 'ProfileType',
-        'action' => 'deleteProfileType',
-        'middleware' => 'AdminAuth',
-    ],
-    [
-        'path' => 'admin',
-        'controller' => 'Dashboard',
-        'action' => 'home',
-        'middleware' => 'AdminAuth',
-    ],
-    [
-        'path' => 'admin/logout',
-        'controller' => 'Logout',
-        'action' => 'logoutAdmin',
-        'middleware' => 'AdminAuth',
+use Libraries\Facades\Route;
+Route::get('/', 'Home', 'index');
 
-    ],
-    [
-        'path' => 'admin/login',
-        'controller' => 'LoginAdmin',
-        'action' => 'index',
-        'middleware' => 'AdminGuest',
-    ],
-    [
-        'path' => 'admin/handle-login',
-        'controller' => 'LoginAdmin',
-        'action' => 'authentication',
-        'middleware' => 'AdminGuest',
-    ],
-    [
-        'path' => 'nhap-thong-tin-ho-so',
-        'controller' => 'home',
-        'action' => 'store',
-    ],
-    [
-        'path' => 'tra-cuu-thong-tin',
-        'controller' => 'home',
-        'action' => 'search',
-    ],
-];
+Route::get('admin/login', 'LoginAdmin','index', 'AdminGuest');
+Route::post('admin/handle-login', 'LoginAdmin', 'authentication', 'AdminGuest');
+Route::get('admin/logout', 'Logout', 'logoutAdmin', 'AdminAuth');
+Route::get('admin/logout', 'Logout', 'logoutAdmin', 'AdminAuth');
+
+Route::get('admin', 'Dashboard', 'home', 'AdminAuth');
+
+Route::get('admin/profile-type', 'ProfileType', 'index', 'AdminAuth');
+Route::post('admin/profile-type/store', 'ProfileType', 'storeProfileType', 'AdminAuth');
+Route::get('admin/profile-type/show', 'ProfileType', 'showProfileType', 'AdminAuth');
+Route::post('admin/profile-type/update', 'ProfileType', 'updateProfileType', 'AdminAuth');
+Route::post('admin/profile-type/delete', 'ProfileType', 'deleteProfileType', 'AdminAuth');
+
+
+Route::get('nhap-thong-tin-ho-so', 'Home', 'store');
+Route::post('nhap-thong-tin-ho-so', 'Home', 'store');
+Route::get('tra-cuu-thong-tin', 'home', 'search');
