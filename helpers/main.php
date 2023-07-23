@@ -8,7 +8,7 @@ class main
 
     public function __construct()
     {
-        $url = $_GET['url'] ?? '';
+        $url = explode(base,"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]")[1] ?? '';
         $path = trim($url, '/') ? trim($url, '/') : '/';
         foreach (routes as $route) {
             
