@@ -1,11 +1,9 @@
 <?php
-class admin extends controller
+class Dashboard extends controller
 {
-
+    public $title;
     public function __construct()
     {
-        //kiểm tra người dùng đăng nhập
-        new AdminAuth();
     }
 
     public function home()
@@ -19,12 +17,12 @@ class admin extends controller
         ];
         $data = [
             'page' => "admin/manage/index",
-            'title' => MANAGE['title'],
             'card_title' => MANAGE['card_title'],
             'active' => 1,
             'list' => $list,
         ];
 
+        $this->title = MANAGE['title'];
         //Hiển thị view
         $this->view('admin/masterlayout', $data);
     }

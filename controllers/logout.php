@@ -1,5 +1,5 @@
 <?php
-class logout extends controller
+class Logout extends controller
 {
     public function __construct()
     {
@@ -9,6 +9,6 @@ class logout extends controller
     public function logoutAdmin()
     {
         unset($_SESSION['auth-admin']);
-        return redirect('login/admin');
+        return redirect('admin/login');
     }
 }

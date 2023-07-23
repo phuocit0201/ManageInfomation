@@ -1,5 +1,5 @@
 <?php
-class errors extends controller
+class Errors extends controller
 {
     public function __construct()
     {

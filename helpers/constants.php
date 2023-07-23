@@ -22,10 +22,13 @@ const BOX_DELETE = [
     'cancel' => 'Không'
 ];
 
+const CREATE_ITEM_SUCCESS = 'Thêm mới thành công';
+const CREATE_ITEM_FAILED = 'Thêm mới thất bại';
 const DELETE_ITEM_SUCCESS = 'Xóa thành công';
 const DELETE_ITEM_FAILED = 'Xóa thất bại';
 const UPDATE_ITEM_SUCCESS = 'Chỉnh sửa thành công';
 const UPDATE_ITEM_FAILED = 'Chỉnh sửa thất bại vui lòng thử lại';
+const ITEM_NOT_FOUND = 'Không tìm thấy vui lòng thử lại';
 
 const ACTIVE_ACCOUNT = [
     'unbanned' => 1,
@@ -45,4 +48,9 @@ const STATUS_MANAGE = [
         'text' => 'Từ Chối',
         'value' => 2
     ],
+];
+
+const PROFILE_TYPE = [
+    'title' => 'Quản Lý Loại Hồ Sơ',
+    'card_title' => 'Danh Sách Loại Hồ Sơ',
 ];

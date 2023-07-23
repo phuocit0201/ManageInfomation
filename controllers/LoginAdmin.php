@@ -1,22 +1,21 @@
 <?php
-class login extends controller
+class LoginAdmin extends controller
 {
     private Validate $validate;
 
     public function __construct()
     {
         $this->validate = new Validate();
+        new AdminGuest();
     }
 
-    public function admin()
+    public function index()
     {
-        new Guest('auth-admin');
         $this->view('admin/login');
     }
 
-    public function authenticationAdmin()
+    public function authentication()
     {
-        new Guest('auth-admin');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -33,7 +32,7 @@ class login extends controller
                 return redirect('admin');
             }
             $_SESSION['message'] = LOGIN_FAILD;
-            return redirect('login/admin');
+            return redirect('admin/login');
         }
     }
 }
