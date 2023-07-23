@@ -50,18 +50,25 @@ class Database
 
     public function insert($data)
     {
-        $fillabel = "(";
-        $value = "(";
-        foreach ($data as $key => $values) {
-            $fillabel .= $key . ",";
-            $value .= "'" . $values . "',";
-        }
-        $fillabel = substr($fillabel, 0, -1) . ")";
-        $value = substr($value, 0, -1) . ")";
-        $sql = "insert into $this->model" . $fillabel . "values" . $value;
+        $fillable = array_keys($data);
+        $values = array_values($data);
+        $fillableString = implode(', ', $fillable);
 
-        $this->ExecuteSql($sql);
-        return $this->conn->lastInsertId();
+        // Create a string of placeholder values.
+        $placeholders = rtrim(str_repeat('?, ', count($values)), ', ');
+
+        $sql = "INSERT INTO $this->model ($fillableString) VALUES ($placeholders)";
+
+        try {
+            $stmt = $this->conn->prepare($sql);
+
+            // Execute the prepared statement with the values.
+            $stmt->execute($values);
+
+            return $this->conn->lastInsertId();
+        } catch (PDOException $e) {
+            return null;
+        }
     }
 
     public function all($sort = ["id", "ASC"])
@@ -94,7 +101,7 @@ class Database
         }
         $sql = substr($sql, 0, strlen($sql) - 4);
 
-        return $this->SelectAllDB($sql)[0] ?? null;
+        return $this->SelectAllDB($sql)[0] ?? [];
     }
 
     public function joins(

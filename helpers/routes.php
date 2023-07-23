@@ -1,4 +1,4 @@
-<?php 
+<?php
 const routes = [
     [
         'path' => '/',
@@ -60,5 +60,14 @@ const routes = [
         'action' => 'authentication',
         'middleware' => 'AdminGuest',
     ],
+    [
+        'path' => 'nhap-thong-tin-ho-so',
+        'controller' => 'home',
+        'action' => 'store',
+    ],
+    [
+        'path' => 'tra-cuu-thong-tin',
+        'controller' => 'home',
+        'action' => 'search',
+    ],
 ];
-?>
