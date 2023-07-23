@@ -8,10 +8,10 @@ class main
 
     public function __construct()
     {
-        $url = explode(base,"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]")[1] ?? '';
+        $url = explode("?", explode(base, "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]")[1])[0] ?? '';
         $path = trim($url, '/') ? trim($url, '/') : '/';
         foreach (routes as $route) {
-            
+
             if (strtolower($path) == strtolower(trim($route['path']))) {
                 $this->controller = $route['controller'];
                 $this->acction = $route['action'];
@@ -19,7 +19,6 @@ class main
                 if (isset($route['middleware'])) {
                     new $route['middleware'];
                 }
-
             }
         }
         if (file_exists("./controllers/" . $this->controller . ".php")) {
@@ -31,6 +30,5 @@ class main
         if (method_exists($this->controller, $this->acction)) {
             call_user_func_array([$this->controller, $this->acction], []);
         }
-        
     }
 }
