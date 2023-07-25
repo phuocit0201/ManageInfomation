@@ -1,28 +1,90 @@
 <?php 
 namespace Libraries\Facades;
+use Libraries\Facades\Routing;
 class Route
 {
-    public static $get = array();
-    public static $post = array();
+    private static $get = array();
+    private static $post = array();
 
-    public static function get($path, $controller, $action, $middleware = null)
+    public static $routing;
+    public static function get($path, $controller, $action)
     {
-        self::$get[] = [
-            'path' => $path,
-            'controller' => $controller,
-            'action' => $action,
-            'middleware' => $middleware,
-        ];
+        self::$routing = new Routing();
+        self::$routing->path = $path;
+        self::$routing->controller = $controller;
+        self::$routing->action = $action;
+        self::$get[] = self::$routing;
+        return new self;
     }
 
-    public static function post($path, $controller, $action, $middleware = null)
+    public function middleware($middleware)
     {
-        self::$post[] = [
-            'path' => $path,
-            'controller' => $controller,
-            'action' => $action,
-            'middleware' => $middleware,
-        ];
+        self::$routing->middleware = $middleware;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            foreach(self::$post as $route) {
+                if (self::$routing->path == $route->path) {
+                    $route->middleware = $middleware;
+                    return $this;
+                }
+            }
+        } else {
+            foreach(self::$get as $route) {
+                if (self::$routing->path == $route->path) {
+                    $route->middleware = $middleware;
+                    return $this;
+                }
+            }
+        }
+
+        return $this;
+    }
+
+    public function name($name)
+    {
+        self::$routing->name = $name;
+        return;
+    }
+
+    public static function post($path, $controller, $action)
+    {
+        self::$routing = new Routing();
+        self::$routing->path = $path;
+        self::$routing->controller = $controller;
+        self::$routing->action = $action;
+        self::$post[] = self::$routing;
+        return new self;
+    }
+
+    public static function routesGet()
+    {
+        return self::$get;
+    }
+
+    public static function routesPost()
+    {
+        return self::$post;
+    }
+
+    public static function isRoute($path)
+    {
+        if (strtolower(trim($path)) === strtolower(self::getPathRequest())) {
+            return true;
+        }
+        return false;
+    }
+
+    private static function getPathRequest()
+    {
+        $url = explode("?", explode(base, self::getFullURL())[1])[0] ?? '';
+        return trim($url, '/') ? trim($url, '/') : '/';
+    }
+
+    private static function getFullURL() {
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+        $host = $_SERVER['HTTP_HOST'];
+        $requestUri = $_SERVER['REQUEST_URI'];
+    
+        return $protocol . $host . $requestUri;
     }
 }
 ?>

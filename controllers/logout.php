@@ -9,6 +9,6 @@ class Logout extends controller
     public function logoutAdmin()
     {
         unset($_SESSION['auth-admin']);
-        return redirect('admin/login');
+        return redirect(route('login'));
     }
 }

@@ -12,20 +12,11 @@ class Main
         
         $path = $this->getPathRequest();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->init(Route::$post, $path);
+            $this->initMain(Route::routesPost(), $path);
         } else {
-            $this->init(Route::$get, $path);
+            $this->initMain(Route::routesGet(), $path);
         }
-        // foreach (routes as $route) {
-        //     if (strtolower($path) === strtolower(trim($route['path']))) {
-        //         $this->controller = $route['controller'];
-        //         $this->action = $route['action'];
-        //         //kiểm tra xem route có middleware hay không, nếu có thì khởi tạo middleware
-        //         if (isset($route['middleware'])) {
-        //             $this->initMiddleware($route['middleware']);
-        //         }
-        //     }
-        // }
+        
         if (file_exists("./controllers/" . $this->controller . ".php")) {
             require_once "./controllers/" . $this->controller . ".php";
             $this->controller = new $this->controller;
@@ -76,17 +67,19 @@ class Main
         return;
     }
 
-    public function init($routes, $path)
+    public function initMain($routes, $path)
     {
         foreach ($routes as $route) {
-            if (strtolower($path) === strtolower(trim($route['path']))) {
-                $this->controller = $route['controller'];
-                $this->action = $route['action'];
+            if (strtolower($path) === strtolower(trim($route->path))) {
                 //kiểm tra xem route có middleware hay không, nếu có thì khởi tạo middleware
-                if (isset($route['middleware']) && !empty($route['middleware'])) {
-                    $this->initMiddleware($route['middleware']);
+                $this->controller = $route->controller;
+                $this->action = $route->action;
+                if (isset($route->middleware) && !empty($route->middleware)) {
+                    $this->initMiddleware($route->middleware);
                 }
             }
         }
     }
+
+
 }

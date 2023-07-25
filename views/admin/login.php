@@ -31,7 +31,7 @@
           unset($_SESSION['message']);
         }
         ?>
-        <form action="<?= base . 'admin/handle-login'?>" method="post">
+        <form action="<?=route('login')?>" method="post">
           <div class="input-group mb-3">
             <input type="text" class="form-control" name="username" placeholder="Username">
             <div class="input-group-append">
