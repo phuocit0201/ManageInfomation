@@ -91,7 +91,7 @@
                         <img src="public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="javascript:void(0)" class="d-block"><?= Auth::user('auth-admin')['full_name'] ?></a>
+                        <a href="javascript:void(0)" class="d-block"><?= \Helpers\Auth::user('auth-admin')['full_name'] ?></a>
                     </div>
                 </div>
 

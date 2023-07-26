@@ -1,14 +1,12 @@
 <?php
-class Logout extends controller
-{
-    public function __construct()
-    {
-        new AdminAuth();
-    }
+namespace Controllers;
 
+use Helpers\Controller;
+class Logout extends Controller
+{
     public function logoutAdmin()
     {
         unset($_SESSION['auth-admin']);
-        return redirect('admin/login');
+        return redirect(route('admin.login'));
     }
 }

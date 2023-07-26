@@ -1,4 +1,8 @@
 <?php
+namespace Controllers;
+
+use Helpers\controller;
+
 class Errors extends controller
 {
     public function __construct()

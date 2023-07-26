@@ -1,12 +1,17 @@
 <?php
-class LoginAdmin extends controller
+namespace Controllers;
+
+use Helpers\Controller;
+use Helpers\Validate;
+use Helpers\Auth;
+
+class LoginAdmin extends Controller
 {
     private Validate $validate;
 
     public function __construct()
     {
         $this->validate = new Validate();
-        new AdminGuest();
     }
 
     public function index()
@@ -21,7 +26,7 @@ class LoginAdmin extends controller
             $password = $_POST['password'];
             if (!$this->validate->validateLogin($username, $password)) {
                 $_SESSION['message'] = VALIDATE_LOGIN;
-                return redirect('login/admin');
+                return redirect('admin.login');
             }
 
             if (Auth::attempt([
@@ -29,10 +34,11 @@ class LoginAdmin extends controller
                 'password' => md5($password),
                 'active' => ACTIVE_ACCOUNT['unbanned'],
             ], 'auth-admin')) {
-                return redirect('admin');
+                return redirect(route('admin.home'));
             }
             $_SESSION['message'] = LOGIN_FAILD;
-            return redirect('admin/login');
+
+            return redirect(route('admin.login'));
         }
     }
 }

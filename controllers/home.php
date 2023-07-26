@@ -1,11 +1,16 @@
 <?php
-class Home extends controller
+namespace Controllers;
+
+use Helpers\Controller;
+use Models\ProfileInfomation;
+class Home extends Controller
 {
-    private ProfileInfomation $profileInfomationModel;
     public $title;
+    public $profileInfomationModel;
+
     public function __construct()
     {
-        $this->profileInfomationModel = controller::model('ProfileInfomation');
+        $this->profileInfomationModel = new ProfileInfomation();
     }
 
     public function index()
@@ -20,9 +25,10 @@ class Home extends controller
         $this->view('client/layout', $data);
     }
 
-    public function post()
+    public function create()
     {
-        echo "post";die;
+        $this->title = 'Nhập thông tin hồ sơ';
+        $this->view('client/profile-infomation/create');
     }
 
     public function store()
@@ -42,8 +48,8 @@ class Home extends controller
                 ];
             }
         }
-        $this->title = 'Nhập thông tin hồ sơ';
-        $this->view('client/profile-infomation/create');
+       
+        return redirect(route('enter_profile'));
     }
 
     public function search()

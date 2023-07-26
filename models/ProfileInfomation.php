@@ -1,4 +1,7 @@
 <?php
+namespace Models;
+
+use Helpers\Database;
 
 class ProfileInfomation extends Database
 {

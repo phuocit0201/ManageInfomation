@@ -1,21 +1,31 @@
 <?php
 use Libraries\Facades\Route;
-Route::get('/', 'Home', 'index');
 
-Route::get('admin/login', 'LoginAdmin','index', 'AdminGuest');
-Route::post('admin/handle-login', 'LoginAdmin', 'authentication', 'AdminGuest');
-Route::get('admin/logout', 'Logout', 'logoutAdmin', 'AdminAuth');
-Route::get('admin/logout', 'Logout', 'logoutAdmin', 'AdminAuth');
-
-Route::get('admin', 'Dashboard', 'home', 'AdminAuth');
-
-Route::get('admin/profile-type', 'ProfileType', 'index', 'AdminAuth');
-Route::post('admin/profile-type/store', 'ProfileType', 'storeProfileType', 'AdminAuth');
-Route::get('admin/profile-type/show', 'ProfileType', 'showProfileType', 'AdminAuth');
-Route::post('admin/profile-type/update', 'ProfileType', 'updateProfileType', 'AdminAuth');
-Route::post('admin/profile-type/delete', 'ProfileType', 'deleteProfileType', 'AdminAuth');
+use Controllers\LoginAdmin;
+use Controllers\Home;
+use Controllers\ProfileType;
+use Controllers\Logout;
+use Controllers\Dashboard;
 
 
-Route::get('nhap-thong-tin-ho-so', 'Home', 'store');
-Route::post('nhap-thong-tin-ho-so', 'Home', 'store');
-Route::get('tra-cuu-thong-tin', 'home', 'search');
+use Middleware\AdminAuth;
+Route::get('/', Home::class, 'index');
+
+Route::get('admin/login', LoginAdmin::class,'index')->name('admin.login');
+Route::post('admin/login', LoginAdmin::class, 'authentication');
+Route::get('admin/logout', Logout::class, 'logoutAdmin')->middleware(AdminAuth::class)->name('admin.logout');
+
+Route::get('admin', Dashboard::class, 'home')->middleware(AdminAuth::class)->name('admin.home');
+
+Route::get('admin/profile-type', ProfileType::class, 'index')->middleware(AdminAuth::class)->name('admin.profile_type');
+Route::post('admin/profile-type/store', ProfileType::class, 'storeProfileType')->middleware(AdminAuth::class);
+Route::get('admin/profile-type/show', ProfileType::class, 'showProfileType')->middleware(AdminAuth::class);
+Route::post('admin/profile-type/update', ProfileType::class, 'updateProfileType')->middleware(AdminAuth::class);
+Route::post('admin/profile-type/delete', ProfileType::class, 'deleteProfileType')->middleware(AdminAuth::class);
+
+
+Route::get('nhap-thong-tin-ho-so', Home::class, 'create')->name('enter_profile');
+Route::post('nhap-thong-tin-ho-so', Home::class, 'store');
+Route::get('tra-cuu-thong-tin', Home::class, 'search')->name('search_profile');
+
+

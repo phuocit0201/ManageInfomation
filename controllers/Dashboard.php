@@ -1,5 +1,8 @@
 <?php
-class Dashboard extends controller
+namespace Controllers;
+
+use Helpers\Controller;
+class Dashboard extends Controller
 {
     public $title;
     public function __construct()
