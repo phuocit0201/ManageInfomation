@@ -6,5 +6,7 @@ foreach ($folders as $folder) {
         require_once $file;
     }
 }
+require __DIR__ . '/libraries/PHPMailer/PHPMailer.php';
+require __DIR__ . '/libraries/PHPMailer/SMTP.php';
 date_default_timezone_set(timezone);
 $main = new main();
