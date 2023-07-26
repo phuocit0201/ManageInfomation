@@ -9,16 +9,15 @@ class Main
 
     public function __construct()
     {
-        
         $path = $this->getPathRequest();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->initMain(Route::routesPost(), $path);
+            $this->initApplication(Route::routesPost(), $path);
         } else {
-            $this->initMain(Route::routesGet(), $path);
+            $this->initApplication(Route::routesGet(), $path);
         }
         
-        if (file_exists("./controllers/" . $this->controller . ".php")) {
-            require_once "./controllers/" . $this->controller . ".php";
+        if (file_exists("./" . $this->controller . ".php")) {
+            require_once "./" . $this->controller . ".php";
             $this->controller = new $this->controller;
         } else {
             $this->routeNotFound();
@@ -28,7 +27,6 @@ class Main
             call_user_func_array([$this->controller, $this->action], []);
         } else {
             $this->routeNotFound();
-            return;
         }
     }
 
@@ -48,9 +46,9 @@ class Main
 
     public function routeNotFound()
     {
-        $this->controller = 'Errors';
+        $this->controller = \Controllers\Errors::class;
         $this->action = 'error404';
-        require_once "./controllers/" . $this->controller . ".php";
+        require_once "./" . $this->controller . ".php";
         $this->controller = new $this->controller;
         call_user_func_array([$this->controller, $this->action], []);
     }
@@ -64,19 +62,18 @@ class Main
         } else {
             new $middleware;
         }
-        return;
     }
 
-    public function initMain($routes, $path)
+    public function initApplication($routes, $path)
     {
         foreach ($routes as $route) {
             if (strtolower($path) === strtolower(trim($route->path))) {
                 //kiểm tra xem route có middleware hay không, nếu có thì khởi tạo middleware
-                $this->controller = $route->controller;
-                $this->action = $route->action;
                 if (isset($route->middleware) && !empty($route->middleware)) {
                     $this->initMiddleware($route->middleware);
                 }
+                $this->controller = $route->controller;
+                $this->action = $route->action;
             }
         }
     }

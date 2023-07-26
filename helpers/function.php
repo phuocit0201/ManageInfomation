@@ -4,7 +4,13 @@ use Libraries\Facades\Route;
 
 function redirect($url)
 {
-    header("location:" . base . $url);
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+    $isRouteName = stristr($url, $protocol) !== false ? true : false;
+    if ($isRouteName) {
+        header("location:" . $url);
+    } else {
+        header("location:" . base . $url);
+    }
     exit();
 }
 

@@ -1,4 +1,9 @@
 <?php
+namespace Helpers;
+
+use PDOException;
+use PDO;
+use Exception;
 class Database
 {
     private $conn;
@@ -20,7 +25,7 @@ class Database
             // set the PDO error mode to exception
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+            throw new Exception("Connection failed: " . $e->getMessage());
         }
     }
 

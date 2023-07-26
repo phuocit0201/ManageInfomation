@@ -1,17 +1,19 @@
 <?php
-require_once './helpers/controller.php';
-class Auth extends controller
+namespace Helpers;
+
+use Models\Users;
+class Auth
 {
     public static function user($guard = 'auth-user')
     {
-        $userModel = controller::model('users');
+        $userModel = new Users();
         return $userModel->find(['id' => $_SESSION[$guard]]);
     }
 
     public static function check($guard = 'auth-user')
     {
         if (isset($_SESSION[$guard])) {
-            $userModel = controller::model('users');
+            $userModel = new Users();
             $user =  $userModel->find([
                 'id' => $_SESSION[$guard],
                 'active' => ACTIVE_ACCOUNT['unbanned'],
@@ -28,7 +30,7 @@ class Auth extends controller
 
     public static function attempt($array = [], $guard = 'auth-user')
     {
-        $userModel = controller::model('users');
+        $userModel = new Users();
         $user = $userModel->find($array);
 
         if (empty($user)) {

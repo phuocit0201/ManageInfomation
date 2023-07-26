@@ -1,4 +1,5 @@
 <?php
+namespace Helpers;
 class Validate
 {
     public function validateLogin($username, $password)

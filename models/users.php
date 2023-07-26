@@ -1,5 +1,7 @@
 <?php
+namespace Models;
 
+use Helpers\Database;
 class Users extends Database
 {
     protected $table = 'users';

@@ -1,5 +1,9 @@
 <?php
-class ProfileType extends controller
+namespace Controllers;
+
+use Helpers\Controller;
+use Models\ProfileTypes;
+class ProfileType extends Controller
 {
     public $title;
 
@@ -7,7 +11,7 @@ class ProfileType extends controller
 
     public function __construct()
     {
-        $this->profileTypeModel = controller::model('ProfileTypes');
+        $this->profileTypeModel = new ProfileTypes();
     }
     
     public function index()
@@ -67,7 +71,7 @@ class ProfileType extends controller
             }
         }
 
-        return redirect('admin/profile-type');
+        return redirect(route('admin.profile_type'));
     }
 
     public function showProfileType()
@@ -112,6 +116,6 @@ class ProfileType extends controller
             }
         }
 
-        return redirect('admin/profile-type');
+        return redirect(route('admin.profile_type'));
     }
 }

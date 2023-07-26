@@ -1,12 +1,8 @@
 <?php
-class controller
-{
+namespace Helpers;
 
-    public static function model($model)
-    {
-        require_once "./models/" . $model . ".php";
-        return new $model;
-    }
+class Controller
+{
 
     function view($view, $data = [])
     {
