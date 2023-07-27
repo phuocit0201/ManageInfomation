@@ -48,7 +48,7 @@
                     </tr>
                     <tr>
                         <th scope="row" class="w-25">Email</th>
-                        <td class="w-75"><?= $data["profile"]["mail"] ?></td>
+                        <td class="w-75"><?= $data["profile"]["email"] ?></td>
                     </tr>
                     <tr>
                         <th scope="row" class="w-25">Đơn vị</th>

@@ -22,25 +22,25 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="full_name" class="form-label">Họ và Tên</label>
-                        <input required name="data[full_name]" type="text" id="full_name" class="form-control">
+                        <input required name="data[full_name]" type="text" value="<?=getOldValue('full_name')?>" id="full_name" class="form-control">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="phone_number" class="form-label">Số điện thoại</label>
-                        <input required name="data[phone_number]" type="tel" id="phone_number" class="form-control">
+                        <input required name="data[phone_number]" type="tel" value="<?=getOldValue('phone_number')?>" id="phone_number" class="form-control">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="mail" class="form-label">Email</label>
-                        <input required name="data[mail]" type="email" id="mail" class="form-control">
+                        <input required name="data[email]" type="email" value="<?=getOldValue('email')?>" id="email" class="form-control">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="organization" class="form-label">Đơn vị</label>
-                        <input required name="data[organization]" type="text" id="organization" class="form-control">
+                        <input required name="data[organization]" type="text" value="<?=getOldValue('organization')?>" id="organization" class="form-control">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="branch" class="form-label">Chi bộ</label>
-                        <input required name="data[branch]" type="text" id="branch" class="form-control">
+                        <input required name="data[branch]" type="text" value="<?=getOldValue('branch')?>" id="branch" class="form-control">
                     </div>
                 </div>
                 <div class="row">
@@ -58,12 +58,12 @@
                     </div>
                     <div class="col-md-8 mb-3" id='js_name_profile'>
                         <label for="name_profile" class="form-label">Tên loại hồ sơ</label>
-                        <input required name="data[type_profile]" type="mail" id="name_profile" class="form-control" disabled>
+                        <input required name="data[type_profile]" type="text" value="<?=getOldValue('type_profile')?>" id="name_profile" class="form-control" disabled>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="quantity_profile" class="form-label">Số lượng hồ sơ</label>
-                    <input required name="data[quantity_profile]" type="number" id="quantity_profile" class="form-control">
+                    <input required name="data[quantity_profile]" type="number" value="<?=getOldValue('quantity_profile')?>" id="quantity_profile" class="form-control">
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">

@@ -24,3 +24,21 @@ function route($routeName)
         }
     }
 }
+
+function getOldValue($key)
+{
+    if (isset($_SESSION['old'][$key])) {
+        $value = $_SESSION['old'][$key];
+        unset($_SESSION['old'][$key]);
+        return $value;
+    }
+    return '';
+}
+
+function setOldValue($data)
+{
+    if (isset($_SESSION['old'])) {
+        unset($_SESSION['old']);
+    }
+    $_SESSION['old'] = $data;
+}

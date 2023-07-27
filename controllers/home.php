@@ -41,8 +41,9 @@ class Home extends Controller
             try {
                 $data = $_POST['data'];
                 $data['created_at'] = date('Y-m-d H:i:s');
+                $data['id'] = $this->generateRandomString(5);
                 $create = $this->profileInfomationModel->insert($data);
-                if (!empty($create)) {
+                if ($create) {
                     $mail = new PHPMailer();
                     $mail->isSMTP();
                     $mail->Host = Host;
@@ -53,9 +54,9 @@ class Home extends Controller
                     $mail->Port = Port;
                     $mail->CharSet = 'UTF-8';
                     $mail->setFrom(Email, Name);
-                    $mail->addAddress($_POST['data']['mail'], $_POST['data']['full_name']);
+                    $mail->addAddress($_POST['data']['email'], $_POST['data']['full_name']);
                     $mail->Subject = 'Mã Hồ Sơ';
-                    $mail->Body = 'Mã hồ sơ của bạn là ' . $create;
+                    $mail->Body = 'Mã hồ sơ của bạn là ' . $data['id'];
                     $mail->send();   
                 
                     $_SESSION['notification'] =  [
@@ -67,6 +68,7 @@ class Home extends Controller
                         'type' => 'error',
                         'message' => 'Thêm hồ sơ thất bại'
                     ];
+                    setOldValue($_POST['data']);
                 }
             } catch (Exception $e) {
                 $_SESSION['notification'] =  [
@@ -89,5 +91,10 @@ class Home extends Controller
         }
         $this->title = 'Tra cứu hồ sơ';
         $this->view('client/profile-infomation/show', $data);
+    }
+
+    function generateRandomString($length) {
+        $bytes = random_bytes($length);
+        return strtoupper(bin2hex($bytes));
     }
 }

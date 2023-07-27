@@ -67,12 +67,9 @@ class Database
         try {
             $stmt = $this->conn->prepare($sql);
 
-            // Execute the prepared statement with the values.
-            $stmt->execute($values);
-
-            return $this->conn->lastInsertId();
+            return $stmt->execute($values);
         } catch (PDOException $e) {
-            return null;
+            return false;
         }
     }
 

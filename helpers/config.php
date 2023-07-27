@@ -1,11 +1,11 @@
 <?php
 define("base", "http://localhost/ManageInfomation/");
 define("url", "public/upload/");
-define("server_name_db", "sql6.freemysqlhosting.net");
+define("server_name_db", "103.221.222.96");
 define("port_db", "3306");
-define("username_db", "sql6634474");
-define("password_db", "GtxJlNAnjM");
-define("name_db", "sql6634474");
+define("username_db", "ifrcvrvn_manage_infomation");
+define("password_db", "ifrcvrvn_manage_infomation");
+define("name_db", "ifrcvrvn_manage_infomation");
 define("timezone", "Asia/Ho_Chi_Minh");
 
 //config email
