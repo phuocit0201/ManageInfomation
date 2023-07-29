@@ -21,7 +21,6 @@ class ProfileType extends Controller
         $data = [
             'page' => "admin/profile-type/index",
             'card_title' => PROFILE_TYPE['card_title'],
-            'active' => 1,
             'list' => $list,
         ];
 

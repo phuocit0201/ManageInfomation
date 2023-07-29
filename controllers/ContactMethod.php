@@ -21,7 +21,6 @@ class ContactMethod extends Controller
         $data = [
             'page' => "admin/contact-method/index",
             'card_title' => CONTACT_METHODS['card_title'],
-            'active' => 1,
             'list' => $list,
         ];
 

@@ -3,19 +3,19 @@
 use Controllers\ContactMethod;
 use Libraries\Facades\Route;
 
-use Controllers\LoginAdmin;
+use Controllers\Authentication;
 use Controllers\Home;
 use Controllers\ProfileType;
-use Controllers\Logout;
 use Controllers\Dashboard;
 use Controllers\ReceivePerson;
 use Middleware\AdminAuth;
 
 Route::get('/', Home::class, 'index');
 
-Route::get('admin/login', LoginAdmin::class,'index')->name('admin.login');
-Route::post('admin/login', LoginAdmin::class, 'authentication');
-Route::get('admin/logout', Logout::class, 'logoutAdmin')->middleware(AdminAuth::class)->name('admin.logout');
+Route::get('admin/login', Authentication::class,'index')->name('admin.login');
+Route::post('admin/login', Authentication::class, 'authentication');
+Route::get('admin/logout', Authentication::class, 'logout')->middleware(AdminAuth::class)->name('admin.logout');
+Route::get('admin/change-password', Authentication::class, 'changePassword')->middleware(AdminAuth::class)->name('admin.change_password');
 
 Route::get('admin', Dashboard::class, 'home')->middleware(AdminAuth::class)->name('admin.home');
 

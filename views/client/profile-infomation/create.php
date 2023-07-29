@@ -16,7 +16,7 @@
         <form action="<?= base ?>nhap-thong-tin-ho-so" method="POST">
             <fieldset>
                 <div class="text-center">
-                    <img class="w-25 img-fluid" src=" <?= base ?>/public/images/job.svg" alt="" srcset="">
+                    <img style="width: 100%;" src="public/images/job.svg" alt="" srcset="">
                     <h2 class="m-3 text-primary">NHẬP THÔNG TIN HỒ SƠ</h2>
                 </div>
                 <div class="row">

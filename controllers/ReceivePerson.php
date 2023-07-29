@@ -21,7 +21,6 @@ class ReceivePerson extends Controller
         $data = [
             'page' => "admin/receive-person/index",
             'card_title' => PROFILE_PERSONS['card_title'],
-            'active' => 1,
             'list' => $list,
         ];
 

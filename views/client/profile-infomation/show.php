@@ -17,7 +17,7 @@
         <form action="<?= base ?>tra-cuu-thong-tin" method="GET">
             <fieldset>
                 <div class="text-center">
-                    <img class="w-25 img-fluid" src=" <?= base ?>/public/images/job.svg" alt="" srcset="">
+                    <img style="width: 100%;" src="public/images/job.svg" alt="" srcset="">
                     <h2 class="m-3 text-primary">TRA CỨU HỒ SƠ</h2>
                 </div>
                 <div class="input-group mb-3">
