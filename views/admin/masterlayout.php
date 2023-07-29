@@ -102,10 +102,42 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="admin/profile-type" class="nav-link <?php echo ($data['active'] == 1) ? 'active' : '' ?>">
+                            <a href="<?=route('admin.profile_type')?>" class="nav-link <?= (isRoute(route('admin.profile_type'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Quản Lí Hồ Sơ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=route('admin.profile_type')?>" class="nav-link <?= (isRoute(route('admin.profile_type'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lí Loại Hồ Sơ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=route('admin.receive_persons')?>" class="nav-link <?=(isRoute(route('admin.receive_persons'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Quản Lí Người Tiếp Nhận
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=route('admin.contact_methods')?>" class="nav-link <?=(isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Quản Lí PT LIÊN HỆ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=route('admin.contact_methods')?>" class="nav-link <?=(isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Đổi Mật Khẩu
                                 </p>
                             </a>
                         </li>

@@ -21,7 +21,6 @@ class Dashboard extends Controller
         $data = [
             'page' => "admin/manage/index",
             'card_title' => MANAGE['card_title'],
-            'active' => 1,
             'list' => $list,
         ];
 
