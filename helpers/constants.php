@@ -75,3 +75,30 @@ const PROFILE_TYPE = [
     'title' => 'Quản Lý Loại Hồ Sơ',
     'card_title' => 'Danh Sách Loại Hồ Sơ',
 ];
+
+const STATUS_PROFILE_INFO = [
+    [
+        'text' => 'Chờ kiểm duyệt',
+        'value' => 1
+    ],
+    [
+        'text' => 'Đã nhận hồ sơ',
+        'value' => 2
+    ],
+    [
+        'text' => 'Đang xử lý',
+        'value' => 3
+    ],
+    [
+        'text' => 'Trả hồ sơ về',
+        'value' => 4
+    ],
+    [
+        'text' => 'Chỉnh sửa và bổ sung hồ sơ',
+        'value' => 5
+    ],
+    [
+        'text' => 'Đã nhận lại Hồ sơ từ VPĐU',
+        'value' => 6
+    ],
+];
