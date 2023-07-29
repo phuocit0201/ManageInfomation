@@ -13,8 +13,8 @@
                         <table id="table-data" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Mã Loại Hồ Sơ</th>
-                                    <th>Tên Loại Hồ Sơ</th>
+                                    <th>Mã Người Tiếp Nhận</th>
+                                    <th>Tên Người Tiếp Nhận</th>
                                     <th>Ngày Tạo</th>
                                     <th>Thao Tác</th>
                                 </tr>
@@ -26,7 +26,7 @@
                                         <td><?= $item['name'] ?></td>
                                         <td><?= $item['created_at'] ?></td>
                                         <td>
-                                            <form action="<?= base . 'admin/profile-type/delete' ?>" method="post" id="delete-item-form">
+                                            <form action="<?=route('admin.receive_persons_delete') ?>" method="post" id="delete-item-form">
                                                 <button profile-type-id="<?=$item['id']?>" class="btn btn-info" 
                                                     data-toggle="modal" type="button" id="edit">
                                                     <i class="fas fa-edit"></i>
@@ -59,10 +59,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?=base?>admin/profile-type/store" method="POST">
+                <form action="<?=route('admin.receive_persons_store')?>" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Nhập Tên Loại Hồ Sơ</label>
-                        <input type="text" name="name" class="form-control" placeholder="Nhập tên loại hồ sơ" required>
+                        <label for="exampleFormControlFile1">Nhập Tên Người Tiếp Nhận</label>
+                        <input type="text" name="name" class="form-control" placeholder="Nhập tên người tiếp nhận" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -77,7 +77,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa hồ sơ<i></i></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa người tiếp nhận<i></i></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -119,15 +119,15 @@
         let id = $(this).attr('profile-type-id')
         $.ajax({
             type: 'GET',
-            url: '<?=base . 'admin/profile-type/show?id='?>' + id
+            url: '<?=route('admin.receive_persons_show') . '?id='?>' + id
         }).done((res)=>{
             let data = JSON.parse(res);
             if (data.status) {
                 let form = `
-                <form action="<?=base?>admin/profile-type/update" method="POST">
+                <form action="<?=route('admin.receive_persons_update')?>" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Nhập Tên Loại Hồ Sơ</label>
-                        <input type="text" name="name" value="${data.data.name}" class="form-control" placeholder="Nhập tên loại hồ sơ" required>
+                        <label for="exampleFormControlFile1">Nhập Tên Người Tiếp Nhận</label>
+                        <input type="text" name="name" value="${data.data.name}" class="form-control" placeholder="Nhập tên người tiếp nhận" required>
                         <input type="text" name="id" value="${data.data.id}" class="form-control" hidden>
                     </div>
                     <div class="modal-footer">

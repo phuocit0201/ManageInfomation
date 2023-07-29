@@ -7,6 +7,27 @@ const MANAGE = [
     'edit' => 'Chỉnh Sửa Hồ Sơ',
 ];
 
+const PROFILE_PERSONS = [
+    'title' => 'Quản Lý Người Tiếp Nhận',
+    'card_title' => 'Danh Sách Người Tiếp Nhận',
+    'create' => 'Thêm Mới Người Tiếp Nhận',
+    'edit' => 'Chỉnh Sửa Người Tiếp Nhận',
+];
+
+const PROFILE_TYPES = [
+    'title' => 'Quản Lý Loại Hồ Sơ',
+    'card_title' => 'Danh Sách Loại Hồ Sơ',
+    'create' => 'Thêm Mới Loại Hồ Sơ',
+    'edit' => 'Chỉnh Sửa Loại Hồ Sơ',
+];
+
+const CONTACT_METHODS = [
+    'title' => 'Quản Lý Phương Thức Liên Hệ',
+    'card_title' => 'Danh Sách Phương Thức Liên Hệ',
+    'create' => 'Thêm Mới Phương Thức Liên Hệ',
+    'edit' => 'Chỉnh Sửa Phương Thức Liên Hệ',
+];
+
 const VALIDATE_LOGIN = 'Tài khoản và mật khẩu không được chứa các kí tự đặc biệt';
 const LOGIN_FAILD = 'Thông tin đăng nhập không chính xác';
 const UPLOAD_FILE_SUCCESS = 'Tải file lên thành công';

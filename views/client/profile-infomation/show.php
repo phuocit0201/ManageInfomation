@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="public/plugins/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
@@ -36,7 +37,27 @@
     } else if (isset($data["profile"]) && !empty($data["profile"]) && isset($data["keyword"])) {
     ?>
         <div class="container">
-            <table class="table">
+            <section class="multi_step_form">
+                <form id="msform">
+                    <!-- <div class="tittle">
+                        <h2>Verification Process</h2>
+                        <p>In order to use this service, you have to complete this verification process</p>
+                    </div> -->
+                    <ul id="progressbar">
+                        <li id="step1">Chờ kiểm duyệt</li>
+                        <li id="step2">Đã nhận hồ sơ </li>
+                        <li id="step3">Đang xử lý </li>
+                        <!-- <li id="step4">Thành công</li> -->
+                    </ul>
+                    <ul id="progressbar">
+                        <li id="step4">Trả hồ sơ về </li>
+                        <li id="step5">Chỉnh sửa và Bổ sung hồ sơ</li>
+                        <li id="step6">Đã nhận lại Hồ sơ từ VPĐU</li>
+                        <!-- <li id="step4">Thành công</li> -->
+                    </ul>
+                </form>
+            </section>
+            <table class="table mt-3">
                 <tbody>
                     <tr>
                         <th scope="row" class="w-25">Họ và tên</th>
@@ -78,6 +99,26 @@
             </table>
         </div>
     <?php } ?>
+
+    <script>
+        $(document).ready(function (){
+            currentStep('step4')
+        })
+
+        function currentStep(step)
+        {
+            let currentStep = parseInt(step.replace(/\D/g, ''));
+            for (let i = 1; i <= currentStep; i++) {
+                activeStep(i);
+            }
+        }
+
+        function activeStep(step)
+        {
+            $(`#step${step}`).removeClass('active');
+            $(`#step${step}`).addClass('active');
+        }
+    </script>
 </body>
 
 </html>
