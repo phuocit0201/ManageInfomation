@@ -11,76 +11,81 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
+<body class="bg-white">
     <div class="container">
         <form action="<?= base ?>nhap-thong-tin-ho-so" method="POST">
             <fieldset>
                 <div class="text-center">
                     <img style="width: 100%;" src="public/images/job.svg" alt="" srcset="">
-                    <h2 class="m-3 text-primary">NHẬP THÔNG TIN HỒ SƠ</h2>
+                    <h3 class="my-5 text-primary fw-bolder">NHẬP THÔNG TIN HỒ SƠ</h3>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label for="full_name" class="form-label">Họ và Tên</label>
-                        <input required name="data[full_name]" type="text" value="<?=getOldValue('full_name')?>" id="full_name" class="form-control">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="phone_number" class="form-label">Số điện thoại</label>
-                        <input required name="data[phone_number]" type="tel" value="<?=getOldValue('phone_number')?>" id="phone_number" class="form-control">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="mail" class="form-label">Email</label>
-                        <input required name="data[email]" type="email" value="<?=getOldValue('email')?>" id="email" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="organization" class="form-label">Đơn vị</label>
-                        <input required name="data[organization]" type="text" value="<?=getOldValue('organization')?>" id="organization" class="form-control">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="branch" class="form-label">Chi bộ</label>
-                        <input required name="data[branch]" type="text" value="<?=getOldValue('branch')?>" id="branch" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label for="type_profile" class="form-label">Chọn loại hồ sơ</label>
-                        <select required name="data[type_profile]" id="type_profile" class="form-select">
-                            <option>Hồ sơ kết nạp Đảng</option>
-                            <option>Hồ sơ công nhận Đảng viên chính thức</option>
-                            <option>Hồ sơ Đảng viên đến</option>
-                            <option>Hồ sơ đề nghị chuyển sinh hoạt Đảng</option>
-                            <option>Lấy phiếu giới thiệu</option>
-                            <option>Kế hoạnh và DTKP về nguồn</option>
-                            <option value='other'>Khác</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 mb-3" id='js_name_profile'>
-                        <label for="name_profile" class="form-label">Tên loại hồ sơ</label>
-                        <input required name="data[type_profile]" type="text" value="<?=getOldValue('type_profile')?>" id="name_profile" class="form-control" disabled>
+                <div class="container position-relative mb-5">
+                    <p class="fw-bold fs-5 d-inline m-0 px-4 position-absolute top-0 start-50 translate-middle bg-white text-capitalize" style="white-space: nowrap;">Thông tin người nộp</p>
+                    <div class="row my-3 p-4 border border-2 border-dark-subtle rounded">
+                        <div class="col-md-4 mb-4">
+                            <label for="full_name" class="form-label">Họ và Tên</label>
+                            <input required name="data[full_name]" type="text" value="<?= getOldValue('full_name') ?>" id="full_name" class="form-control">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="phone_number" class="form-label">Số điện thoại</label>
+                            <input required name="data[phone_number]" type="tel" value="<?= getOldValue('phone_number') ?>" id="phone_number" class="form-control">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="mail" class="form-label">Email</label>
+                            <input required name="data[email]" type="email" value="<?= getOldValue('email') ?>" id="email" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="organization" class="form-label">Đơn vị</label>
+                            <input required name="data[organization]" type="text" value="<?= getOldValue('organization') ?>" id="organization" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="branch" class="form-label">Chi bộ</label>
+                            <input required name="data[branch]" type="text" value="<?= getOldValue('branch') ?>" id="branch" class="form-control">
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="quantity_profile" class="form-label">Số lượng hồ sơ</label>
-                    <input required name="data[quantity_profile]" type="number" value="<?=getOldValue('quantity_profile')?>" id="quantity_profile" class="form-control">
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="reciever" class="form-label">Người tiếp nhận</label>
-                        <select required name="data[reciever]" id="reciever" class="form-select">
-                            <option>Đ/c Phan Công Đức</option>
-                            <option>Đ/c Nguyễn Thị Phương Nam</option>
-                        </select>
+                <div class="container position-relative mb-5">
+                    <p class="fw-bold fs-5 d-inline m-0 px-4 position-absolute top-0 start-50 translate-middle bg-white text-capitalize" style="white-space: nowrap;">Chi tiết hồ sơ</p>
+                    <div class="row my-3 p-4 border border-2 border-dark-subtle rounded">
+                        <div class="col-md-4 mb-3">
+                            <label for="type_profile" class="form-label">Chọn loại hồ sơ</label>
+                            <select required name="data[type_profile]" id="type_profile" class="form-select">
+                                <?php foreach ($data['type-profile'] as $item) { ?>
+                                    <option><?= $item['name'] ?></option>
+                                <?php } ?>
+                                <option>Khác</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="name_profile" class="form-label">Tên loại hồ sơ</label>
+                            <input required name="data[name_profile]" type="text" value="<?= getOldValue('name_profile') ?>" id="name_profile" class="form-control">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="quantity_profile" class="form-label">Số lượng hồ sơ</label>
+                            <input required name="data[quantity_profile]" type="number" value="<?= getOldValue('quantity_profile') ?>" id="quantity_profile" class="form-control">
+                        </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="contact_method" class="form-label">Phương thức liên hệ</label>
-                        <select required name="data[contact_method]" id="contact_method" class="form-select">
-                            <option>Tiếp nhận trực tiếp</option>
-                            <option>Liên hệ qua Zalo</option>
-                            <option>Liên hệ qua Điện thoại</option>
-                            <option>Liên hệ qua Email</option>
-                        </select>
+                </div>
+                <div class="container position-relative mb-5">
+                    <p class="fw-bold fs-5 d-inline m-0 px-4 position-absolute top-0 start-50 translate-middle bg-white text-capitalize" style="white-space: nowrap;">Thông tin người nhận</p>
+                    <div class="row my-4 p-4 border border-2 border-dark-subtle rounded">
+                        <div class="col-md-6 mb-3">
+                            <label for="reciever" class="form-label">Người tiếp nhận</label>
+                            <select required name="data[reciever]" id="reciever" class="form-select">
+                                <?php foreach ($data['receive-person'] as $item) { ?>
+                                    <option><?= $item['name'] ?></option>
+                                <?php } ?>
+                                <option>Khác</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="contact_method" class="form-label">Phương thức liên hệ</label>
+                            <select required name="data[contact_method]" id="contact_method" class="form-select">
+                                <?php foreach ($data['contact-method'] as $item) { ?>
+                                    <option><?= $item['name'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="text-center m-3">
@@ -121,15 +126,6 @@
                     title: message
                 })
             }
-
-            $('#type_profile').on('change', function() {
-                var selectedValue = $(this).val();
-                if (selectedValue == 'other') {
-                    $('#name_profile').prop('disabled', false);
-                } else {
-                    $('#name_profile').prop('disabled', true);
-                }
-            });
         });
     </script>
 </body>
