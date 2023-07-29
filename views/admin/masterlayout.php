@@ -102,7 +102,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="<?=route('admin.profile_type')?>" class="nav-link <?= (isRoute(route('admin.profile_type'))) ? 'active' : null ?>">
+                            <a href="<?=route('admin.profile_infomation')?>" class="nav-link <?= (isRoute(route('admin.profile_infomation'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lí Hồ Sơ
@@ -129,12 +129,12 @@
                             <a href="<?=route('admin.contact_methods')?>" class="nav-link <?=(isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Quản Lí PT LIÊN HỆ
+                                    Quản Lí PT Liên Hệ
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.contact_methods')?>" class="nav-link <?=(isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
+                            <a href="<?=route('admin.change_password')?>" class="nav-link <?=(isRoute(route('admin.change_password'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Đổi Mật Khẩu
