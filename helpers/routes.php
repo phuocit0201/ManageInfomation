@@ -4,9 +4,11 @@ use Controllers\ContactMethod;
 use Libraries\Facades\Route;
 
 use Controllers\Authentication;
+use Controllers\Branch;
 use Controllers\Home;
 use Controllers\ProfileType;
 use Controllers\Dashboard;
+use Controllers\Organization;
 use Controllers\ProfileInfomation;
 use Controllers\ReceivePerson;
 use Middleware\AdminAuth;
@@ -39,11 +41,24 @@ Route::get('admin/contact-methods/show', ContactMethod::class, 'show')->middlewa
 Route::post('admin/contact-methods/update', ContactMethod::class, 'update')->middleware(AdminAuth::class)->name('admin.contact_methods_update');
 Route::post('admin/contact-methods/delete', ContactMethod::class, 'delete')->middleware(AdminAuth::class)->name('admin.contact_methods_delete');
 
-Route::get('admin/profile-infomation', ProfileInfomation::class, 'index')->middleware(AdminAuth::class)->name('admin.profile_infomation');
-// Route::post('admin/contact-methods/store', ContactMethod::class, 'store')->middleware(AdminAuth::class)->name('admin.contact_methods_store');
-// Route::get('admin/contact-methods/show', ContactMethod::class, 'show')->middleware(AdminAuth::class)->name('admin.contact_methods_show');
-// Route::post('admin/contact-methods/update', ContactMethod::class, 'update')->middleware(AdminAuth::class)->name('admin.contact_methods_update');
-// Route::post('admin/contact-methods/delete', ContactMethod::class, 'delete')->middleware(AdminAuth::class)->name('admin.contact_methods_delete');
+Route::get('admin/organizations', Organization::class, 'index')->middleware(AdminAuth::class)->name('admin.organizations');
+Route::post('admin/organizations/store', Organization::class, 'store')->middleware(AdminAuth::class)->name('admin.organizations_store');
+Route::get('admin/organizations/show', Organization::class, 'show')->middleware(AdminAuth::class)->name('admin.organizations_show');
+Route::post('admin/organizations/update', Organization::class, 'update')->middleware(AdminAuth::class)->name('admin.organizations_update');
+Route::post('admin/organizations/delete', Organization::class, 'delete')->middleware(AdminAuth::class)->name('admin.organizations_delete');
+
+Route::get('admin/branches', Branch::class, 'index')->middleware(AdminAuth::class)->name('admin.branches');
+Route::post('admin/branches/store', Branch::class, 'store')->middleware(AdminAuth::class)->name('admin.branches_store');
+Route::get('admin/branches/show', Branch::class, 'show')->middleware(AdminAuth::class)->name('admin.branches_show');
+Route::post('admin/branches/update', Branch::class, 'update')->middleware(AdminAuth::class)->name('admin.branches_update');
+Route::post('admin/branches/delete', Branch::class, 'delete')->middleware(AdminAuth::class)->name('admin.branches_delete');
+
+Route::get('admin/profile-infomations', ProfileInfomation::class, 'index')->middleware(AdminAuth::class)->name('admin.profile_infomation');
+Route::post('admin/profile-infomations/store', ProfileInfomation::class, 'store')->middleware(AdminAuth::class)->name('admin.profile_infomation_store');
+Route::get('admin/profile-infomations/show', ProfileInfomation::class, 'show')->middleware(AdminAuth::class)->name('admin.profile_infomation_show');
+Route::get('admin/profile-infomations/edit', ProfileInfomation::class, 'edit')->middleware(AdminAuth::class)->name('admin.profile_infomation_edit');
+Route::post('admin/profile-infomations/update', ProfileInfomation::class, 'update')->middleware(AdminAuth::class)->name('admin.profile_infomation_update');
+Route::post('admin/profile-infomations/delete', ProfileInfomation::class, 'delete')->middleware(AdminAuth::class)->name('admin.profile_infomation_delete');
 
 Route::get('nhap-thong-tin-ho-so', Home::class, 'create')->name('enter_profile');
 Route::post('nhap-thong-tin-ho-so', Home::class, 'store');

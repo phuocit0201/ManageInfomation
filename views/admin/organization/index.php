@@ -13,12 +13,9 @@
                         <table id="table-data" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Mã HS</th>
-                                    <th>Họ Và Tên</th>
-                                    <th>Số Điện Thoại</th>
-                                    <th>Loại Hồ Sơ</th>
-                                    <th>Thời Gian</th>
-                                    <th>Trạng Thái</th>
+                                    <th>Mã Đơn Vị</th>
+                                    <th>Tên Đơn Vị</th>
+                                    <th>Ngày Tạo</th>
                                     <th>Thao Tác</th>
                                 </tr>
                             </thead>
@@ -26,35 +23,14 @@
                                 <?php foreach ($data['list'] as $item) { ?>
                                     <tr>
                                         <td><?= $item['id'] ?></td>
-                                        <td><?= $item['full_name'] ?></td>
-                                        <td><?= $item['phone_number'] ?></td>
-                                        <td><?= $item['type_profile'] ?></td>
+                                        <td><?= $item['name'] ?></td>
                                         <td><?= $item['created_at'] ?></td>
                                         <td>
-                                            <?php
-                                            if ($item['status'] == STATUS_PROFILE_INFO[0]['value']) { ?>
-                                                <span class="badge badge-warning"><?= STATUS_PROFILE_INFO[0]['text'] ?></span>
-                                            <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[1]['value']) { ?>
-                                                <span class="badge badge-success"><?= STATUS_PROFILE_INFO[1]['text'] ?></span>
-                                            <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[2]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[2]['text'] ?></span>
-                                            <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[3]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[3]['text'] ?></span>
-                                            <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[4]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[4]['text'] ?></span>
-                                            <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[5]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[5]['text'] ?></span>
-                                            <?php } ?>
-                                            
-                                        </td>
-                                        <td>
-                                            <form action="<?=route('admin.receive_persons_delete') ?>" method="post" id="delete-item-form">
-                                                <a href="<?=route('admin.profile_infomation_show') . '?id=' . $item['id']?>" class="btn btn-info" >
-                                                    <i class="fas fa-info-circle"></i>
-                                                </a>
-                                                <a href="<?=route('admin.profile_infomation_edit') . '?id=' . $item['id']?>" class="btn btn-info">
+                                            <form action="<?=route('admin.organizations_delete') ?>" method="post" id="delete-item-form">
+                                                <button profile-type-id="<?=$item['id']?>" class="btn btn-info" 
+                                                    data-toggle="modal" type="button" id="edit">
                                                     <i class="fas fa-edit"></i>
-                                                </a>
+                                                </button>
                                                 <input type="text" name="id" hidden value="<?= $item['id'] ?>">
                                                 <button class="btn btn-danger" type="submit" id="delete-item-btn">
                                                     <i class="fas fa-trash"></i>
@@ -77,16 +53,16 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm Mới Loại Hồ Sơ<i></i></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Thêm Mới Đơn Vị<i></i></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?=route('admin.receive_persons_store')?>" method="POST">
+                <form action="<?=route('admin.organizations_store')?>" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Nhập Tên Người Tiếp Nhận</label>
-                        <input type="text" name="name" class="form-control" placeholder="Nhập tên người tiếp nhận" required>
+                        <label for="exampleFormControlFile1">Nhập Tên Đơn Vị</label>
+                        <input type="text" name="name" class="form-control" placeholder="Nhập tên đơn vị" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -101,7 +77,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa người tiếp nhận<i></i></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa đơn vị<i></i></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -143,15 +119,15 @@
         let id = $(this).attr('profile-type-id')
         $.ajax({
             type: 'GET',
-            url: '<?=route('admin.receive_persons_show') . '?id='?>' + id
+            url: '<?=route('admin.organizations_show') . '?id='?>' + id
         }).done((res)=>{
             let data = JSON.parse(res);
             if (data.status) {
                 let form = `
-                <form action="<?=route('admin.receive_persons_update')?>" method="POST">
+                <form action="<?=route('admin.organizations_update')?>" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Nhập Tên Người Tiếp Nhận</label>
-                        <input type="text" name="name" value="${data.data.name}" class="form-control" placeholder="Nhập tên người tiếp nhận" required>
+                        <label for="exampleFormControlFile1">Nhập Tên Đơn Vị</label>
+                        <input type="text" name="name" value="${data.data.name}" class="form-control" placeholder="Nhập tên đơn vị" required>
                         <input type="text" name="id" value="${data.data.id}" class="form-control" hidden>
                     </div>
                     <div class="modal-footer">

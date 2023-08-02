@@ -20,12 +20,12 @@ class ProfileInfomation extends Controller
 
         $data = [
             'page' => "admin/profile-infomation/index",
-            'card_title' => PROFILE_PERSONS['card_title'],
+            'card_title' => PROFILE_INFOMATION['card_title'],
             'list' => $list,
         ];
 
         //Hiển thị view
-        $this->title = PROFILE_PERSONS['title'];
+        $this->title = PROFILE_INFOMATION['title'];
         $this->view('admin/masterlayout', $data);
     }
 
@@ -71,24 +71,44 @@ class ProfileInfomation extends Controller
 
     public function show()
     {
-        $profileType = $this->profileInfomationModel->find(['id' => $_GET['id']]);
-        if($profileType) {
-            echo json_encode([
-                'status' => 'true',
-                'data' => $profileType
-            ]);
+        $profileInfomation = $this->profileInfomationModel->find(['id' => $_GET['id'] ?? null]);
+
+        if(empty($profileInfomation)) {
+            $this->view('error/404');
             return;
         }
+        $profileInfomation['status'] = $this->getValueStatus($profileInfomation['status']);
 
-        echo json_encode([
-            'data' => []
-        ]);
-        return;
+        $data = [
+            'page' => "admin/profile-infomation/show",
+            'card_title' => PROFILE_INFOMATION['show'],
+            'profile_infomation' => $profileInfomation
+        ];
+        $this->title = PROFILE_INFOMATION['show'];
+        $this->view('admin/masterlayout', $data);
+    }
+
+    public function edit()
+    {
+        $profileInfomation = $this->profileInfomationModel->find(['id' => $_GET['id'] ?? null]);
+
+        if(empty($profileInfomation)) {
+            $this->view('error/404');
+            return;
+        }
+        $profileInfomation['status'] = $this->getValueStatus($profileInfomation['status']);
+        $data = [
+            'page' => "admin/profile-infomation/edit",
+            'card_title' => PROFILE_INFOMATION['edit'],
+            'profile_infomation' => $profileInfomation
+        ];
+        $this->title = PROFILE_INFOMATION['edit'];
+        $this->view('admin/masterlayout', $data);
     }
 
     public function update()
     {
-        $id = $_POST['id'];
+        $id = $_POST['id'] ?? null;
         $profileType = $this->profileInfomationModel->find(['id' => $id]);
         if ($profileType) {
             if ($this->profileInfomationModel->update(['name' => $_POST['name']], ['id' => $id])) {
@@ -110,5 +130,25 @@ class ProfileInfomation extends Controller
         }
 
         return redirect(route('admin.receive_persons'));
+    }
+
+    private function getValueStatus($status)
+    {
+        switch($status) {
+            case STATUS_PROFILE_INFO[0]['value']:
+                return STATUS_PROFILE_INFO[0]['text'];
+            case STATUS_PROFILE_INFO[1]['value']:
+                return STATUS_PROFILE_INFO[1]['text'];
+            case STATUS_PROFILE_INFO[2]['value']:
+                return STATUS_PROFILE_INFO[2]['text'];
+            case STATUS_PROFILE_INFO[3]['value']:
+                return STATUS_PROFILE_INFO[3]['text'];
+            case STATUS_PROFILE_INFO[4]['value']:
+                return STATUS_PROFILE_INFO[4]['text'];
+            case STATUS_PROFILE_INFO[5]['value']:
+                return STATUS_PROFILE_INFO[5]['text'];
+        }
+
+        return null;
     }
 }

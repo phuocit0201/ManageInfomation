@@ -65,10 +65,11 @@ class Home extends Controller
                 $mail->SMTPSecure = SMTPSecure;
                 $mail->Port = Port;
                 $mail->CharSet = 'UTF-8';
+                $mail->isHTML(true);
                 $mail->setFrom(Email, Name);
                 $mail->addAddress($_POST['data']['email'], $_POST['data']['full_name']);
                 $mail->Subject = 'Mã Hồ Sơ';
-                $mail->Body = 'Mã hồ sơ của bạn là ' . $data['id'];
+                $mail->Body = '<h1 style="color:red;">TRANG CHỦ</h1>';
                 $mail->send();
 
                 $_SESSION['notification'] =  [

@@ -45,7 +45,7 @@ function setOldValue($data)
 
 function isRoute($path)
 {
-    if (strtolower(trim($path)) === strtolower(getFullURL())) {
+    if (strtolower(trim($path)) === strtolower(explode('?', getFullURL())[0])) {
         return true;
     }
     return false;

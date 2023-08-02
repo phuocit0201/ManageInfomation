@@ -28,6 +28,30 @@ const CONTACT_METHODS = [
     'edit' => 'Chỉnh Sửa Phương Thức Liên Hệ',
 ];
 
+const PROFILE_INFOMATION = [
+    'title' => 'Quản Lý Hồ Sơ',
+    'card_title' => 'Danh Sách Hồ Sơ',
+    'create' => 'Thêm Mới Hồ Sơ',
+    'edit' => 'Chỉnh Sửa Hồ Sơ',
+    'show' => 'Chi Tiết Hồ Sơ',
+];
+
+const ORGANIZATION = [
+    'title' => 'Quản Lý Đơn Vị',
+    'card_title' => 'Danh Sách Đơn Vị',
+    'create' => 'Thêm Mới Đơn Vị',
+    'edit' => 'Chỉnh Sửa Đơn Vị',
+    'show' => 'Chi Tiết Đơn Vị',
+];
+
+const BRANCH = [
+    'title' => 'Quản Lý Chi Bộ',
+    'card_title' => 'Danh Sách Chi Bộ',
+    'create' => 'Thêm Mới Chi Bộ',
+    'edit' => 'Chỉnh Sửa Chi Bộ',
+    'show' => 'Chi Tiết Chi Bộ',
+];
+
 const VALIDATE_LOGIN = 'Tài khoản và mật khẩu không được chứa các kí tự đặc biệt';
 const LOGIN_FAILD = 'Thông tin đăng nhập không chính xác';
 const UPLOAD_FILE_SUCCESS = 'Tải file lên thành công';

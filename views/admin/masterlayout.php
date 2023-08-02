@@ -102,7 +102,8 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="<?=route('admin.profile_infomation')?>" class="nav-link <?= (isRoute(route('admin.profile_infomation'))) ? 'active' : null ?>">
+                            <a href="<?=route('admin.profile_infomation')?>" 
+                                class="nav-link <?= (isRoute(route('admin.profile_infomation')) || isRoute(route('admin.profile_infomation_show')) || isRoute(route('admin.profile_infomation_edit'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lí Hồ Sơ
@@ -130,6 +131,22 @@
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lí PT Liên Hệ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=route('admin.organizations')?>" class="nav-link <?=(isRoute(route('admin.organizations'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Quản Lí Đơn Vị
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=route('admin.branches')?>" class="nav-link <?=(isRoute(route('admin.branches'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Quản Lí Chi Bộ
                                 </p>
                             </a>
                         </li>
@@ -162,7 +179,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark"><?= $data['card_title'] ?></h1>
+                            <h1 class="m-0 text-dark" id="card-title"><?= $data['card_title'] ?></h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->

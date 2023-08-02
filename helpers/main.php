@@ -10,7 +10,6 @@ class Main
     public function __construct()
     {
         $path = $this->getPathRequest();
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->initApplication(Route::routesPost(), $path);
         } else {
