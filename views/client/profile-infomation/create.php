@@ -36,11 +36,19 @@
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="organization" class="form-label">Đơn vị</label>
-                            <input required name="data[organization]" type="text" value="<?= getOldValue('organization') ?>" id="organization" class="form-control">
+                            <select required name="data[organization]" id="organization" class="form-select" value="<?= getOldValue('organization') ?>">
+                                <?php foreach ($data['organization'] as $item) { ?>
+                                    <option><?= $item['name'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="branch" class="form-label">Chi bộ</label>
-                            <input required name="data[branch]" type="text" value="<?= getOldValue('branch') ?>" id="branch" class="form-control">
+                            <select required name="data[branch]" id="branch" class="form-select" value="<?= getOldValue('branch') ?>">
+                                <?php foreach ($data['branch'] as $item) { ?>
+                                    <option><?= $item['name'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
                 </div>

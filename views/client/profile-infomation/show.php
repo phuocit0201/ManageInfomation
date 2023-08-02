@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container w-100">
         <form action="<?= base ?>tra-cuu-thong-tin" method="GET">
             <fieldset>
                 <div class="text-center">
@@ -37,84 +37,112 @@
     } else if (isset($data["profile"]) && !empty($data["profile"]) && isset($data["keyword"])) {
     ?>
         <div class="container">
-            <section class="multi_step_form">
-                <form id="msform">
-                    <!-- <div class="tittle">
-                        <h2>Verification Process</h2>
-                        <p>In order to use this service, you have to complete this verification process</p>
-                    </div> -->
-                    <ul id="progressbar">
-                        <li id="step1">Chờ kiểm duyệt</li>
-                        <li id="step2">Đã nhận hồ sơ </li>
-                        <li id="step3">Đang xử lý </li>
-                        <!-- <li id="step4">Thành công</li> -->
-                    </ul>
-                    <ul id="progressbar">
-                        <li id="step4">Trả hồ sơ về </li>
-                        <li id="step5">Chỉnh sửa và Bổ sung hồ sơ</li>
-                        <li id="step6">Đã nhận lại Hồ sơ từ VPĐU</li>
-                        <!-- <li id="step4">Thành công</li> -->
-                    </ul>
-                </form>
+            <div class="col-8">
+                <table class="table mt-3">
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="w-25">Họ và tên</th>
+                            <td class="w-75"><?= $data["profile"]["full_name"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Số điện thoại</th>
+                            <td class="w-75"><?= $data["profile"]["phone_number"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Email</th>
+                            <td class="w-75"><?= $data["profile"]["email"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Đơn vị</th>
+                            <td class="w-75"><?= $data["profile"]["organization"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Chi bộ</th>
+                            <td class="w-75"><?= $data["profile"]["branch"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Loại hồ sơ</th>
+                            <td class="w-75"><?= $data["profile"]["type_profile"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Số lượng hồ sơ</th>
+                            <td class="w-75"><?= $data["profile"]["quantity_profile"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Người tiếp nhận</th>
+                            <td class="w-75"><?= $data["profile"]["reciever"] ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="w-25">Phương thức liên hệ</th>
+                            <td class="w-75"><?= $data["profile"]["contact_method"] ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <section class="py-5">
+                <ul class="timeline">
+                    <li class="timeline-item mb-5">
+                        <h5 class="fw-bold">Our company starts its operations</h5>
+                        <p class="text-muted mb-2 fw-bold">11 March 2020</p>
+                        <p class="text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                            necessitatibus adipisci, ad alias, voluptate pariatur officia
+                            repellendus repellat inventore fugit perferendis totam dolor
+                            voluptas et corrupti distinctio maxime corporis optio?
+                        </p>
+                    </li>
+
+                    <li class="timeline-item mb-5">
+                        <h5 class="fw-bold">First customer</h5>
+                        <p class="text-muted mb-2 fw-bold">19 March 2020</p>
+                        <p class="text-muted">
+                            Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
+                            aliquet laoreet sapien, eget pulvinar lectus maximus vel.
+                            Phasellus suscipit porta mattis.
+                        </p>
+                    </li>
+
+                    <li class="timeline-item mb-5">
+                        <h5 class="fw-bold">Our team exceeds 10 people</h5>
+                        <p class="text-muted mb-2 fw-bold">24 June 2020</p>
+                        <p class="text-muted">
+                            Orci varius natoque penatibus et magnis dis parturient montes,
+                            nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
+                            facilisis erat pellentesque nec. Duis et dui maximus dui aliquam
+                            convallis. Quisque consectetur purus erat, et ullamcorper sapien
+                            tincidunt vitae.
+                        </p>
+                    </li>
+
+                    <li class="timeline-item mb-5">
+                        <h5 class="fw-bold">Earned the first million $!</h5>
+                        <p class="text-muted mb-2 fw-bold">15 October 2020</p>
+                        <p class="text-muted">
+                            Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
+                            et urna sit amet massa dapibus tristique non finibus ligula. Nam
+                            pharetra libero nibh, id feugiat tortor rhoncus vitae. Ut suscipit
+                            vulputate mattis.
+                        </p>
+                    </li>
+                </ul>
             </section>
-            <table class="table mt-3">
-                <tbody>
-                    <tr>
-                        <th scope="row" class="w-25">Họ và tên</th>
-                        <td class="w-75"><?= $data["profile"]["full_name"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Số điện thoại</th>
-                        <td class="w-75"><?= $data["profile"]["phone_number"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Email</th>
-                        <td class="w-75"><?= $data["profile"]["email"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Đơn vị</th>
-                        <td class="w-75"><?= $data["profile"]["organization"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Chi bộ</th>
-                        <td class="w-75"><?= $data["profile"]["branch"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Loại hồ sơ</th>
-                        <td class="w-75"><?= $data["profile"]["type_profile"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Số lượng hồ sơ</th>
-                        <td class="w-75"><?= $data["profile"]["quantity_profile"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Người tiếp nhận</th>
-                        <td class="w-75"><?= $data["profile"]["reciever"] ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="w-25">Phương thức liên hệ</th>
-                        <td class="w-75"><?= $data["profile"]["contact_method"] ?></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     <?php } ?>
 
     <script>
-        $(document).ready(function (){
+        $(document).ready(function() {
             currentStep('step4')
         })
 
-        function currentStep(step)
-        {
+        function currentStep(step) {
             let currentStep = parseInt(step.replace(/\D/g, ''));
             for (let i = 1; i <= currentStep; i++) {
                 activeStep(i);
             }
         }
 
-        function activeStep(step)
-        {
+        function activeStep(step) {
             $(`#step${step}`).removeClass('active');
             $(`#step${step}`).addClass('active');
         }

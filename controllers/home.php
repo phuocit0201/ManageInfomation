@@ -4,7 +4,9 @@ namespace Controllers;
 
 use Exception;
 use Helpers\Controller;
+use Models\Branch;
 use Models\ContactMethod;
+use Models\Organization;
 use Models\ProfileInfomation;
 use Models\ProfileTypes;
 use Models\ReceivePerson;
@@ -17,6 +19,8 @@ class Home extends Controller
     public $profileTypesModel;
     public $receivePersonModel;
     public $contactMethodModel;
+    public $organizationModel;
+    public $branchModel;
 
     public function __construct()
     {
@@ -24,6 +28,8 @@ class Home extends Controller
         $this->profileTypesModel = new ProfileTypes();
         $this->receivePersonModel = new ReceivePerson();
         $this->contactMethodModel = new ContactMethod();
+        $this->organizationModel = new Organization();
+        $this->branchModel = new Branch();
     }
 
     public function index()
@@ -42,7 +48,9 @@ class Home extends Controller
         $data = [
             'type-profile' => $this->profileTypesModel->all(),
             'receive-person' => $this->receivePersonModel->all(),
-            'contact-method' => $this->contactMethodModel->all()
+            'contact-method' => $this->contactMethodModel->all(),
+            'branch' => $this->branchModel->all(),
+            'organization' => $this->organizationModel->all()
         ];
         $this->title = 'Nhập thông tin hồ sơ';
         $this->view('client/profile-infomation/create', $data);

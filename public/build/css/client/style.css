@@ -1,82 +1,36 @@
-* {
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,
+html,
+body {
+    padding: 0px;
+    margin: 0px;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    perspective: 800px;
 }
 
-.multi_step_form {
-    display: block;
-    overflow: hidden;
-}
-.multi_step_form #msform {
-    text-align: center;
+.timeline {
+    border-left: 1px solid hsl(0, 0%, 90%);
     position: relative;
-    padding-top: 50px;
-    background: #ffffff;
-    z-index: 1;
-}
-.multi_step_form #msform .tittle {
-    text-align: center;
-    padding-bottom: 55px;
-}
-.multi_step_form #msform .tittle h2 {
-    font: 500 24px/35px "Roboto", sans-serif;
-    color: #3f4553;
-    padding-bottom: 5px;
-}
-.multi_step_form #msform .tittle p {
-    font: 400 16px/28px "Roboto", sans-serif;
-    color: #5f6771;
+    list-style: none;
 }
 
-.multi_step_form #msform #progressbar {
-    margin-bottom: 30px;
-    overflow: hidden;
-}
-.multi_step_form #msform #progressbar li {
-    list-style-type: none;
-    color: #99a2a8;
-    font-size: 9px;
-    width: calc(100% / 3);
-    float: left;
+.timeline .timeline-item {
     position: relative;
-    font: 500 13px/1 "Roboto", sans-serif;
-    padding-bottom: 10px;
 }
-.multi_step_form #msform #progressbar li:nth-child(2):before {
-    content: "\f12f";
-}
-.multi_step_form #msform #progressbar li:nth-child(3):before {
-    content: "\f457";
-}
-.multi_step_form #msform #progressbar li:before {
-    content: "\f1fa";
-    font: normal normal normal 30px/50px Ionicons;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    display: block;
-    background: #eaf0f4;
-    border-radius: 50%;
-    margin: 0 auto 10px auto;
-}
-.multi_step_form #msform #progressbar li:after {
-    content: '';
-    width: 100%;
-    height: 10px;
-    background: #eaf0f4;
+
+.timeline .timeline-item:after {
     position: absolute;
-    left: -50%;
-    top: 21px;
-    z-index: -1;
+    display: block;
+    top: 0;
 }
-.multi_step_form #msform #progressbar li:last-child:after {
-    width: 150%;
-}
-.multi_step_form #msform #progressbar li.active {
-    color: #5cb85c;
-}
-.multi_step_form #msform #progressbar li.active:before, .multi_step_form #msform #progressbar li.active:after {
-    background: #5cb85c;
-    color: white;
+
+.timeline .timeline-item:after {
+    background-color: hsl(0, 0%, 90%);
+    left: -38px;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    content: "";
 }
