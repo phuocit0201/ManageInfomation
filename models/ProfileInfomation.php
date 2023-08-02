@@ -11,4 +11,10 @@ class ProfileInfomation extends Database
         parent::__construct();
         $this->model = $this->table;
     }
+
+    public function getStatistical()
+    {
+        $sql = "SELECT status, count(*) as sum FROM profile_infomations group by status;";
+        return $this->SelectAllDB($sql);
+    }
 }

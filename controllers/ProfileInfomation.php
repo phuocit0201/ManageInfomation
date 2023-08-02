@@ -2,16 +2,32 @@
 namespace Controllers;
 
 use Helpers\Controller;
+use Models\Branch;
+use Models\ContactMethod;
+use Models\Organization;
 use Models\ProfileInfomation as ProfileInfomationModel;
+use Models\ProfileTypes;
+use Models\ReceivePerson;
+
 class ProfileInfomation extends Controller
 {
     public $title;
 
     private ProfileInfomationModel $profileInfomationModel;
+    private $profileTypesModel;
+    private $receivePersonModel;
+    private $contactMethodModel;
+    private $organizationModel;
+    private $branchModel;
 
     public function __construct()
     {
         $this->profileInfomationModel = new ProfileInfomationModel();
+        $this->profileTypesModel = new ProfileTypes();
+        $this->receivePersonModel = new ReceivePerson();
+        $this->contactMethodModel = new ContactMethod();
+        $this->organizationModel = new Organization();
+        $this->branchModel = new Branch();
     }
     
     public function index()
@@ -95,11 +111,15 @@ class ProfileInfomation extends Controller
             $this->view('error/404');
             return;
         }
-        $profileInfomation['status'] = $this->getValueStatus($profileInfomation['status']);
         $data = [
             'page' => "admin/profile-infomation/edit",
             'card_title' => PROFILE_INFOMATION['edit'],
-            'profile_infomation' => $profileInfomation
+            'profile_infomation' => $profileInfomation,
+            'type-profile' => $this->profileTypesModel->all(),
+            'receive-person' => $this->receivePersonModel->all(),
+            'contact-method' => $this->contactMethodModel->all(),
+            'branch' => $this->branchModel->all(),
+            'organization' => $this->organizationModel->all()
         ];
         $this->title = PROFILE_INFOMATION['edit'];
         $this->view('admin/masterlayout', $data);
@@ -107,10 +127,11 @@ class ProfileInfomation extends Controller
 
     public function update()
     {
-        $id = $_POST['id'] ?? null;
+        $id = $_POST['data']['id'] ?? null;
+        $data = $_POST['data'];
         $profileType = $this->profileInfomationModel->find(['id' => $id]);
         if ($profileType) {
-            if ($this->profileInfomationModel->update(['name' => $_POST['name']], ['id' => $id])) {
+            if ($this->profileInfomationModel->update($data, ['id' => $id])) {
                 $_SESSION['notification'] = [
                     'type' => 'success',
                     'messager' => UPDATE_SUCCESS
@@ -128,7 +149,7 @@ class ProfileInfomation extends Controller
             ];
         }
 
-        return redirect(route('admin.receive_persons'));
+        return redirect(route('admin.profile_infomation_update') . '?id=' . $id);
     }
 
     private function getValueStatus($status)

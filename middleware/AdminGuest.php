@@ -6,7 +6,7 @@ class AdminGuest
     public function __construct()
     {
         if (isset($_SESSION['auth-admin'])) {
-            redirect(route('admin.home'));
+            redirect(route('admin.dashboard'));
         }
     }
 }

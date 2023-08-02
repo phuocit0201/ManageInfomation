@@ -37,7 +37,7 @@ class Authentication extends Controller
             'password' => md5($password),
             'active' => ACTIVE_ACCOUNT['unbanned'],
         ], 'auth-admin')) {
-            return redirect(route('admin.home'));
+            return redirect(route('admin.dashboard'));
         }
         $_SESSION['message'] = LOGIN_FAILD;
 

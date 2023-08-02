@@ -12,10 +12,11 @@ use Controllers\Organization;
 use Controllers\ProfileInfomation;
 use Controllers\ReceivePerson;
 use Middleware\AdminAuth;
+use Middleware\AdminGuest;
 
 Route::get('/', Home::class, 'index');
 
-Route::get('admin/login', Authentication::class,'index')->name('admin.login');
+Route::get('admin/login', Authentication::class,'index')->middleware(AdminGuest::class)->name('admin.login');
 Route::post('admin/login', Authentication::class, 'authentication');
 Route::get('admin/logout', Authentication::class, 'logout')->middleware(AdminAuth::class)->name('admin.logout');
 Route::get('admin/change-password', Authentication::class, 'changePassword')->middleware(AdminAuth::class)->name('admin.change_password');
@@ -57,7 +58,7 @@ Route::get('admin/profile-infomations', ProfileInfomation::class, 'index')->midd
 Route::post('admin/profile-infomations/store', ProfileInfomation::class, 'store')->middleware(AdminAuth::class)->name('admin.profile_infomation_store');
 Route::get('admin/profile-infomations/show', ProfileInfomation::class, 'show')->middleware(AdminAuth::class)->name('admin.profile_infomation_show');
 Route::get('admin/profile-infomations/edit', ProfileInfomation::class, 'edit')->middleware(AdminAuth::class)->name('admin.profile_infomation_edit');
-Route::post('admin/profile-infomations/update', ProfileInfomation::class, 'update')->middleware(AdminAuth::class)->name('admin.profile_infomation_update');
+Route::post('admin/profile-infomations/edit', ProfileInfomation::class, 'update')->middleware(AdminAuth::class)->name('admin.profile_infomation_update');
 Route::post('admin/profile-infomations/delete', ProfileInfomation::class, 'delete')->middleware(AdminAuth::class)->name('admin.profile_infomation_delete');
 
 Route::get('nhap-thong-tin-ho-so', Home::class, 'create')->name('enter_profile');

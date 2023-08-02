@@ -5,7 +5,7 @@
 
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3><?=$data['statistical'][STATUS_PROFILE_INFO[0]['value']] ?? 0?></h3>
                         <p>Tổng hồ sơ chờ kiểm duyệt</p>
                     </div>
                     <div class="icon">
@@ -18,7 +18,7 @@
 
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53</h3>
+                        <h3><?=$data['statistical'][STATUS_PROFILE_INFO[1]['value']] ?? 0?></h3>
                         <p>Tổng hồ sơ đã nhận></p>
                     </div>
                     <div class="icon">
@@ -31,7 +31,7 @@
 
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3><?=$data['statistical'][STATUS_PROFILE_INFO[2]['value']] ?? 0?></h3>
                         <p>Tổng hồ sơ đang xử lý</p>
                     </div>
                     <div class="icon">
@@ -44,7 +44,7 @@
 
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3><?=$data['statistical'][STATUS_PROFILE_INFO[3]['value']] ?? 0?></h3>
                         <p>Tổng hồ sơ trả về</p>
                     </div>
                     <div class="icon">
@@ -57,7 +57,7 @@
 
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3><?=$data['statistical'][STATUS_PROFILE_INFO[4]['value']] ?? 0?></h3>
                         <p>Tổng hồ sơ chỉnh sửa và bổ sung</p>
                     </div>
                     <div class="icon">
@@ -70,7 +70,7 @@
 
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3><?=$data['statistical'][STATUS_PROFILE_INFO[5]['value']] ?? 0?></h3>
                         <p>Tổng hồ sơ đã nhận lại từ VPĐU</p>
                     </div>
                     <div class="icon">
