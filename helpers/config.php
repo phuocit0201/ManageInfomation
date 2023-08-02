@@ -1,19 +1,19 @@
 <?php
-define("base", "http://localhost/ManageInfomation/");
-define("url", "public/upload/");
-define("server_name_db", "103.221.222.96");
-define("port_db", "3306");
-define("username_db", "ifrcvrvn_manage_infomation");
-define("password_db", "ifrcvrvn_manage_infomation");
-define("name_db", "ifrcvrvn_manage_infomation");
-define("timezone", "Asia/Ho_Chi_Minh");
+const base = "http://localhost/ManageInfomation/";
+const url = "public/upload/";
+const server_name_db = "103.221.222.96";
+const port_db = "3306";
+const username_db = "ifrcvrvn_manage_infomation";
+const password_db = "ifrcvrvn_manage_infomation";
+const name_db = "ifrcvrvn_manage_infomation";
+const timezone = "Asia/Ho_Chi_Minh";
 
 //config email
-define("Host" ,"smtp.gmail.com");
-define("SMTPAuth", true);
-define("Username", "pn.flatshop@gmail.com");
-define("Password", "uwficymusyjbbsze");
-define("SMTPSecure", "tls");
-define("Port", 587);
-define("Name", "FLATSHOP");
-define("Email", "pn.flatshop@gmail.com");
+const Host = "smtp.gmail.com";
+const SMTPAuth = true;
+const Username = "pn.flatshop@gmail.com";
+const Password = "uwficymusyjbbsze";
+const SMTPSecure = "tls";
+const Port = 587;
+const Name = "FLATSHOP";
+const Email = "pn.flatshop@gmail.com";

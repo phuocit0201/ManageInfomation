@@ -17,7 +17,6 @@ class ProfileType extends Controller
     public function index()
     {
         $list = $this->profileTypeModel->all(['id', 'desc']);
-
         $data = [
             'page' => "admin/profile-type/index",
             'card_title' => PROFILE_TYPE['card_title'],

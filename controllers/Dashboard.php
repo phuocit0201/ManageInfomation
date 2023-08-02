@@ -19,12 +19,12 @@ class Dashboard extends Controller
             ]
         ];
         $data = [
-            'page' => "admin/manage/index",
-            'card_title' => MANAGE['card_title'],
+            'page' => "admin/dashboard/index",
+            'card_title' => DASHBOARD['card_title'],
             'list' => $list,
         ];
 
-        $this->title = MANAGE['title'];
+        $this->title = DASHBOARD['title'];
         //Hiển thị view
         $this->view('admin/masterlayout', $data);
     }

@@ -102,6 +102,15 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
+                            <a href="<?=route('admin.dashboard')?>"
+                               class="nav-link <?= (isRoute(route('admin.dashboard')) ) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Trung Tâm Điều Khiển
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?=route('admin.profile_infomation')?>" 
                                 class="nav-link <?= (isRoute(route('admin.profile_infomation')) || isRoute(route('admin.profile_infomation_show')) || isRoute(route('admin.profile_infomation_edit'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>

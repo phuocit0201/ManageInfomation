@@ -17,7 +17,6 @@ class ProfileInfomation extends Controller
     public function index()
     {
         $list = $this->profileInfomationModel->all(['id', 'desc']);
-
         $data = [
             'page' => "admin/profile-infomation/index",
             'card_title' => PROFILE_INFOMATION['card_title'],

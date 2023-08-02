@@ -21,7 +21,7 @@ Route::get('admin/logout', Authentication::class, 'logout')->middleware(AdminAut
 Route::get('admin/change-password', Authentication::class, 'changePassword')->middleware(AdminAuth::class)->name('admin.change_password');
 Route::post('admin/change-password', Authentication::class, 'handleChangePassword')->middleware(AdminAuth::class);
 
-Route::get('admin', Dashboard::class, 'home')->middleware(AdminAuth::class)->name('admin.home');
+Route::get('admin', Dashboard::class, 'home')->middleware(AdminAuth::class)->name('admin.dashboard');
 
 Route::get('admin/profile-type', ProfileType::class, 'index')->middleware(AdminAuth::class)->name('admin.profile_type');
 Route::post('admin/profile-type/store', ProfileType::class, 'storeProfileType')->middleware(AdminAuth::class);

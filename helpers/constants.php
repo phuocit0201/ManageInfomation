@@ -1,5 +1,9 @@
 <?php
 // chỉ được sửa những value text sau dấu " => " này
+const DASHBOARD = [
+    'title' => 'Trung Tâm Điều Khiển',
+    'card_title' => 'Trung Tâm Điều Khiển',
+];
 const MANAGE = [
     'title' => 'Quản Lý Hồ Sơ',
     'card_title' => 'Danh Sách Hồ Sơ',
