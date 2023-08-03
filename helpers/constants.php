@@ -122,7 +122,7 @@ const STATUS_PROFILE_INFO = [
         'value' => 4
     ],
     [
-        'text' => 'Chỉnh sửa và bổ sung hồ sơ',
+        'text' => 'Chỉnh sửa và bổ sung',
         'value' => 5
     ],
     [

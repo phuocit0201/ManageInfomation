@@ -1,6 +1,10 @@
 <?php
+
 namespace Controllers;
 
+use DateInterval;
+use DatePeriod;
+use DateTime;
 use Helpers\Controller;
 use Models\ProfileInfomation;
 
@@ -16,14 +20,10 @@ class Dashboard extends Controller
 
     public function home()
     {
-        $list = [
-            [
-                'id' => 1,
-                'created_at' => '2023-20-07 19:00:00',
-                'status' => 1
-            ]
-        ];
-       
+        $currentDate = new DateTime();
+        $month = $_GET['month'] ?? $currentDate->format("m");
+        $year = $_GET['year'] ?? $currentDate->format("Y");
+        
         $result = $this->profileInfomationModel->getStatistical();
         $statistical = [
             '1' => 0,
@@ -40,14 +40,40 @@ class Dashboard extends Controller
                 }
             }
         }
+        $statisticalProifile = $this->profileInfomationModel->getQuantityProfileByMonth($month, $year);
+        $days = $this->getAllDayOfMonth($month, $year);
+        $params = array();
+        foreach ($days as $day) {
+            $params[] = 0;
+            foreach ($statisticalProifile as $item) {
+                if ($item['day'] == $day) {
+                    array_pop($params);
+                    $params[] = $item['total'];
+                }
+            }
+        }
+
         $data = [
             'page' => "admin/dashboard/index",
             'card_title' => DASHBOARD['card_title'],
-            'list' => $list,
-            'statistical' => $statistical
+            'statistical' => $statistical,
+            'params' => json_encode($params),
+            'days' => json_encode($days),
+            'month' => $month,
+            'year' => $year
         ];
         $this->title = DASHBOARD['title'];
         //Hiển thị view
         $this->view('admin/masterlayout', $data);
+    }
+
+    private function getAllDayOfMonth($month, $year)
+    {
+        $numberDay = cal_days_in_month(0, $month, $year);
+        $days = array();
+        for ($i = 1; $i <= $numberDay; $i++) {
+            array_push($days, $i);
+        }
+        return $days;
     }
 }

@@ -263,6 +263,8 @@
     <script src="public/plugins/jszip/jszip.min.js"></script>
     <script src="public/plugins/pdfmake/pdfmake.min.js"></script>
     <script src="public/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="public/plugins/chart.js/Chart.min.js"></script>
+
     <!-- dropzonejs -->
     <script src="public/plugins/dropzone/min/dropzone.min.js"></script>
     <script src="public/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
