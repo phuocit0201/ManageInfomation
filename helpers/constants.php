@@ -129,8 +129,14 @@ const STATUS_PROFILE_INFO = [
         'text' => 'Đã nhận lại Hồ sơ từ VPĐU',
         'value' => 6
     ],
+    [
+        'text' => 'Hoàn tất hồ sơ và lưu tại văn phòng',
+        'value' => 7
+    ],
 ];
 
 const NAME_PROFILE_EXCEL = 'HOSO.xlsx';
 
 const SUBJECT_RECEIVED_PROFILE = 'Đã Nhận Hồ Sơ';
+const SUBJECT_EDIT_PROFILE = 'Chỉnh Sửa Và Bổ Sung Hồ Sơ';
+const SUBJECT_COMPLETED_PROFILE = 'Hoàn Tất Hồ Sơ';

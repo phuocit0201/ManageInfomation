@@ -146,6 +146,20 @@ class ProfileInfomation extends Controller
                         'body' => '<h1 style="color:red;">Bạn đã nhận hồ sơ</h1>'
                     ];
                     sendEmail($dataEmail);
+                } elseif ($data['status'] == STATUS_PROFILE_INFO[4]['value']) {
+                    $dataEmail = [
+                        'email' => $params['email'],
+                        'subject' => SUBJECT_EDIT_PROFILE,
+                        'body' => '<pre style="color:red;">' . $params['note'] . '</pre>'
+                    ];
+                    sendEmail($dataEmail);
+                } elseif ($data['status'] == STATUS_PROFILE_INFO[6]['value']) {
+                    $dataEmail = [
+                        'email' => $params['email'],
+                        'subject' => SUBJECT_COMPLETED_PROFILE,
+                        'body' => '<p>Hồ sơ của bạn đã được hoàn tất</p>'
+                    ];
+                    sendEmail($dataEmail);
                 }
                 $_SESSION['notification'] = [
                     'type' => 'success',
@@ -247,6 +261,8 @@ class ProfileInfomation extends Controller
                 return STATUS_PROFILE_INFO[4]['text'];
             case STATUS_PROFILE_INFO[5]['value']:
                 return STATUS_PROFILE_INFO[5]['text'];
+            case STATUS_PROFILE_INFO[6]['value']:
+                return STATUS_PROFILE_INFO[6]['text'];
         }
 
         return null;
@@ -260,6 +276,7 @@ class ProfileInfomation extends Controller
             'date_3' => null,
             'date_4' => null,
             'date_5' => null,
+            'date_6' => null,
         ];
         $currentTime = date('Y-m-d H:i:s');
         switch ($status) {
@@ -289,6 +306,15 @@ class ProfileInfomation extends Controller
                 $data['date_3'] = (empty($profile['date_3'])) ? $currentTime : $profile['date_3'];
                 $data['date_4'] = (empty($profile['date_4'])) ? $currentTime : $profile['date_4'];
                 $data['date_5'] = $currentTime;
+                $data['date_6'] = $currentTime;
+                return $data;
+            case '7':
+                $data['date_1'] = (empty($profile['date_1'])) ? $currentTime : $profile['date_1'];
+                $data['date_2'] = (empty($profile['date_2'])) ? $currentTime : $profile['date_2'];
+                $data['date_3'] = (empty($profile['date_3'])) ? $currentTime : $profile['date_3'];
+                $data['date_4'] = (empty($profile['date_4'])) ? $currentTime : $profile['date_4'];
+                $data['date_5'] = $profile['date_5'];
+                $data['date_6'] = $currentTime;
                 return $data;
         }
     }
