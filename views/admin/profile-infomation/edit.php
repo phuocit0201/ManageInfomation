@@ -96,8 +96,12 @@
                         </select>
                     </div>
                     <div class="form-group">
+                            <label>Nội dung bổ sung hồ sơ</label>
+                            <textarea id="" cols="30" rows="10" name="data[note]" class="form-control"><?= $data['profile_infomation']['note'] ?></textarea>
+                        </div>
+                    <div class="form-group">
                         <label>Thời Gian Nộp</label>
-                        <input type="text" value="<?= $data['profile_infomation']['created_at'] ?>" name="current_password" class="form-control">
+                        <input type="text" disabled value="<?= $data['profile_infomation']['created_at'] ?>" class="form-control">
                     </div>
                     <div class="text-center" style="padding: 10px;">
                         <a href="<?= route('admin.profile_infomation_show') . '?id=' . $data['profile_infomation']['id'] ?>" class="btn btn-primary" style="margin-right: 30px;">

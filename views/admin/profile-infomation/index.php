@@ -4,10 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-success" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            <i class="fas fa-plus"></i> Thêm Mới
-                        </button>
-                        <button class="btn btn-success ml-3" type="button" class="btn btn-primary" id="export-excel" data-toggle="modal" data-target="#exampleModal3">
+                        <button class="btn btn-success" type="button" class="btn btn-primary" id="export-excel" data-toggle="modal" data-target="#exampleModal3">
                             <i class="fas fa-file-excel"></i> Xuất Excel
                         </button>
                     </div>
