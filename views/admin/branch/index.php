@@ -32,7 +32,7 @@
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                                 <input type="text" name="id" hidden value="<?= $item['id'] ?>">
-                                                <button class="btn btn-danger" type="submit" id="delete-item-btn">
+                                                <button class="btn btn-danger" type="button" id="delete-item-btn">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

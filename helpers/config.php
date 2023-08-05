@@ -1,6 +1,7 @@
 <?php
 const base = "http://localhost/ManageInfomation/";
 const url = "public/upload/";
+const url_excel = "public/build/excel/";
 const server_name_db = "103.221.222.96";
 const port_db = "3306";
 const username_db = "ifrcvrvn_manage_infomation";

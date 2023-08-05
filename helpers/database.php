@@ -194,4 +194,13 @@ class Database
 
         return $this->SelectAllDB($sql);
     }
+
+    public function paginate($sort = ["id", "ASC"], $limit = 1000, $offset = 0)
+    {
+        $orderBy =  $sort[0];
+        $orderDirection = strtoupper($sort[1]) === "DESC" ? "DESC" : "ASC";
+        $sql = "SELECT * FROM $this->model ORDER BY $orderBy $orderDirection LIMIT $limit OFFSET $offset";
+
+        return $this->SelectAllDB($sql);
+    }
 }

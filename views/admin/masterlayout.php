@@ -37,6 +37,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="public/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="public/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="public/build/css/loading.css">
     <!-- Bootstrap4 Duallistbox -->
     <link rel="stylesheet" href="public/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
     <link rel="stylesheet" href="public/plugins/dropzone/min/dropzone.min.css">
@@ -62,8 +63,7 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -78,8 +78,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{route('AdminHome')}}" class="brand-link">
-                <img src="public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Quản Trị Viên</span>
             </a>
 
@@ -97,38 +96,35 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="<?=route('admin.dashboard')?>"
-                               class="nav-link <?= (isRoute(route('admin.dashboard')) ) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a href="<?= route('admin.dashboard') ?>" class="nav-link <?= (isRoute(route('admin.dashboard'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Trung Tâm Điều Khiển
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.profile_infomation')?>" 
-                                class="nav-link <?= (isRoute(route('admin.profile_infomation')) || isRoute(route('admin.profile_infomation_show')) || isRoute(route('admin.profile_infomation_edit'))) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a href="<?= route('admin.profile_infomation') ?>" class="nav-link <?= (isRoute(route('admin.profile_infomation')) || isRoute(route('admin.profile_infomation_show')) || isRoute(route('admin.profile_infomation_edit'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-id-card-alt"></i>
                                 <p>
                                     Quản Lí Hồ Sơ
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.profile_type')?>" class="nav-link <?= (isRoute(route('admin.profile_type'))) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a href="<?= route('admin.profile_type') ?>" class="nav-link <?= (isRoute(route('admin.profile_type'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-id-card-alt"></i>
                                 <p>
                                     Quản Lí Loại Hồ Sơ
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.receive_persons')?>" class="nav-link <?=(isRoute(route('admin.receive_persons'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.receive_persons') ?>" class="nav-link <?= (isRoute(route('admin.receive_persons'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lí Người Tiếp Nhận
@@ -136,39 +132,39 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.contact_methods')?>" class="nav-link <?=(isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a href="<?= route('admin.contact_methods') ?>" class="nav-link <?= (isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-headset"></i>
                                 <p>
                                     Quản Lí PT Liên Hệ
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.organizations')?>" class="nav-link <?=(isRoute(route('admin.organizations'))) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a href="<?= route('admin.organizations') ?>" class="nav-link <?= (isRoute(route('admin.organizations'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-building"></i>
                                 <p>
                                     Quản Lí Đơn Vị
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.branches')?>" class="nav-link <?=(isRoute(route('admin.branches'))) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a href="<?= route('admin.branches') ?>" class="nav-link <?= (isRoute(route('admin.branches'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-building"></i>
                                 <p>
                                     Quản Lí Chi Bộ
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=route('admin.change_password')?>" class="nav-link <?=(isRoute(route('admin.change_password'))) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a href="<?= route('admin.change_password') ?>" class="nav-link <?= (isRoute(route('admin.change_password'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-key"></i>
                                 <p>
                                     Đổi Mật Khẩu
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=base . 'admin/logout'?>" class="nav-link">
+                            <a href="<?= base . 'admin/logout' ?>" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     Đăng Xuất
@@ -194,8 +190,8 @@
                 </div><!-- /.container-fluid -->
             </div>
             <?php
-      require_once "./views/" . $data["page"] . ".php";
-      ?>
+            require_once "./views/" . $data["page"] . ".php";
+            ?>
         </div>
         <!-- /.content-wrapper -->
         <!-- Control Sidebar -->
@@ -205,14 +201,18 @@
         <!-- /.control-sidebar -->
         <div class="hidden">
             <?php
-      if (isset($_SESSION['notification'])) { ?>
-            <span id="messager"><?= $_SESSION['notification']['messager'] ?></span>
-            <span id="type-mess"><?= $_SESSION['notification']['type'] ?></span>
+            if (isset($_SESSION['notification'])) { ?>
+                <span id="messager"><?= $_SESSION['notification']['messager'] ?></span>
+                <span id="type-mess"><?= $_SESSION['notification']['type'] ?></span>
             <?php
-        unset($_SESSION['notification']);
-      } ?>
+                unset($_SESSION['notification']);
+            } ?>
             <span></span>
         </div>
+    </div>
+   
+    <div class="dialog" id="loading__js">
+        <img src="public/build/images/loading.svg" alt="">
     </div>
     <!-- ./wrapper -->
 
@@ -222,7 +222,7 @@
     <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -270,31 +270,48 @@
     <script src="public/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
     <script>
-    $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
-    $(document).ready(function() {
-        let messager = $('#messager').text();
-        let typeMess = $('#type-mess').text();
-        if (messager.length > 0) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+        $(document).ready(function() {
+            let messager = $('#messager').text();
+            let typeMess = $('#type-mess').text();
+            if (messager.length > 0) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: typeMess,
+                    title: messager
+                })
+            }
+        })
+
+        $(document).on('click', '#delete-item-btn', function() {
+            Swal.fire({
+                title: '<?= BOX_DELETE['title'] ?>',
+                text: "<?= BOX_DELETE['content'] ?>",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '<?= BOX_DELETE['confirm'] ?>',
+                cancelButtonText: '<?= BOX_DELETE['cancel'] ?>'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).closest('form').submit();
                 }
             })
-
-            Toast.fire({
-                icon: typeMess,
-                title: messager
-            })
-        }
-    })
+        });
     </script>
 </body>
 

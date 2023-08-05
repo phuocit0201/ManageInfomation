@@ -1,6 +1,6 @@
 <?php
 session_start();
-$folders = ['./libraries/facades/*.php', './helpers/*.php', './middleware/*.php', './models/*.php'];
+$folders = ['./libraries/facades/*.php', './helpers/*.php', './middleware/*.php', './models/*.php', './libraries/PHPExcel/*.php'];
 foreach ($folders as $folder) {
     foreach (glob($folder) as $file) {
         require_once $file;

@@ -106,7 +106,7 @@
                         <a href="<?= route('admin.profile_infomation') ?>" class="btn btn-primary">
                             Quay lại danh sách
                         </a>
-                        <button class="btn btn-primary" type="submit" id="delete-item-btn" style="margin-left: 30px;">
+                        <button class="btn btn-primary" type="submit" style="margin-left: 30px;">
                             Cập nhật
                         </button>
                     </div>

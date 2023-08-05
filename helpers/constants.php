@@ -130,3 +130,5 @@ const STATUS_PROFILE_INFO = [
         'value' => 6
     ],
 ];
+
+const NAME_PROFILE_EXCEL = 'HOSO.xlsx';

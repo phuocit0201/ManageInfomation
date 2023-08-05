@@ -60,6 +60,7 @@ Route::get('admin/profile-infomations/show', ProfileInfomation::class, 'show')->
 Route::get('admin/profile-infomations/edit', ProfileInfomation::class, 'edit')->middleware(AdminAuth::class)->name('admin.profile_infomation_edit');
 Route::post('admin/profile-infomations/edit', ProfileInfomation::class, 'update')->middleware(AdminAuth::class)->name('admin.profile_infomation_update');
 Route::post('admin/profile-infomations/delete', ProfileInfomation::class, 'delete')->middleware(AdminAuth::class)->name('admin.profile_infomation_delete');
+Route::post('admin/profile-infomations/export-excel', ProfileInfomation::class, 'exportExcel')->middleware(AdminAuth::class)->name('admin.profile_infomation_export_excel');
 
 Route::get('nhap-thong-tin-ho-so', Home::class, 'create')->name('enter_profile');
 Route::post('nhap-thong-tin-ho-so', Home::class, 'store');
