@@ -55,7 +55,7 @@
                 </tbody>
             </table>
         <?php
-        } else {
+        } else if (isset($data["profiles"]) && !empty($data["profiles"]) && isset($data["keyword"])) {
         ?>
             <h4 class="fw-bold">Thông tin hồ sơ</h4>
             <div class=" row p-4 m-0 mb-4 bg-light bg-gradient border rounded shadow">

@@ -64,7 +64,6 @@
                                 <?php foreach ($data['type-profile'] as $item) { ?>
                                     <option><?= $item['name'] ?></option>
                                 <?php } ?>
-                                <option>Khác</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -87,7 +86,6 @@
                                 <?php foreach ($data['receive-person'] as $item) { ?>
                                     <option><?= $item['name'] ?></option>
                                 <?php } ?>
-                                <option>Khác</option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
