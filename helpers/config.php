@@ -1,5 +1,5 @@
 <?php
-const base = "http://localhost/ManageInfomation/";
+const base = "http://localhost/ManageInfomation-main/";
 const url = "public/upload/";
 const url_excel = "public/build/excel/";
 const server_name_db = "103.221.222.96";

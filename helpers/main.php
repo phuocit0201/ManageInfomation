@@ -9,6 +9,8 @@ class Main
 
     public function __construct()
     {
+        $this->checkConfigUrl();
+
         $path = $this->getPathRequest();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->initApplication(Route::routesPost(), $path);
@@ -36,6 +38,14 @@ class Main
         $requestUri = $_SERVER['REQUEST_URI'];
     
         return $protocol . $host . $requestUri;
+    }
+
+    public function checkConfigUrl()
+    {
+        if (strpos($this->getFullURL(), base) === false) {
+            echo "Config base của bạn bị sai vui lòng kiểm tra lại. Hãy coppy domain chính xác!";
+            die();
+        }
     }
 
     public function getPathRequest()

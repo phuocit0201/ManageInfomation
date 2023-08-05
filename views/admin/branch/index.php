@@ -62,7 +62,7 @@
                 <form action="<?=route('admin.branches_store')?>" method="POST">
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Nhập Tên Chi Bộ</label>
-                        <input type="text" name="name" class="form-control" placeholder="Nhập tên chi bộs" required>
+                        <input type="text" name="name" class="form-control" placeholder="Nhập tên chi bộ" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
