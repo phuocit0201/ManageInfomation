@@ -42,13 +42,13 @@
                                             <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[1]['value']) { ?>
                                                 <span class="badge badge-success"><?= STATUS_PROFILE_INFO[1]['text'] ?></span>
                                             <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[2]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[2]['text'] ?></span>
+                                                <span class="badge badge-success"><?= STATUS_PROFILE_INFO[2]['text'] ?></span>
                                             <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[3]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[3]['text'] ?></span>
+                                                <span class="badge badge-success"><?= STATUS_PROFILE_INFO[3]['text'] ?></span>
                                             <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[4]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[4]['text'] ?></span>
+                                                <span class="badge badge-success"><?= STATUS_PROFILE_INFO[4]['text'] ?></span>
                                             <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[5]['value']) { ?>
-                                                <span class="badge badge-danger"><?= STATUS_PROFILE_INFO[5]['text'] ?></span>
+                                                <span class="badge badge-success"><?= STATUS_PROFILE_INFO[5]['text'] ?></span>
                                             <?php } ?>
 
                                         </td>

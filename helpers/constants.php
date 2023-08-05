@@ -132,3 +132,5 @@ const STATUS_PROFILE_INFO = [
 ];
 
 const NAME_PROFILE_EXCEL = 'HOSO.xlsx';
+
+const SUBJECT_RECEIVED_PROFILE = 'Đã Nhận Hồ Sơ';

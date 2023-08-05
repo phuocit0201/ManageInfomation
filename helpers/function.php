@@ -1,6 +1,7 @@
 <?php
 
 use Libraries\Facades\Route;
+use PHPMailer\PHPMailer\PHPMailer;
 
 function redirect($url)
 {
@@ -63,4 +64,29 @@ function getFullURL() {
     $requestUri = $_SERVER['REQUEST_URI'];
 
     return $protocol . $host . $requestUri;
+}
+
+function sendEmail($data)
+{
+    try {
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = Host;
+        $mail->SMTPAuth = SMTPAuth;
+        $mail->Username = Username; // Địa chỉ email của bạn
+        $mail->Password = Password; // Mật khẩu email của bạn
+        $mail->SMTPSecure = SMTPSecure;
+        $mail->Port = Port;
+        $mail->CharSet = 'UTF-8';
+        $mail->isHTML(true);
+        $mail->setFrom(Email, Name);
+        $mail->addAddress($data['email']);
+        $mail->Subject = $data['subject'];
+        $mail->Body = $data['body'];
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+    
 }

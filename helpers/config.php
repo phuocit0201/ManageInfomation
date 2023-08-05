@@ -16,5 +16,5 @@ const Username = "pn.flatshop@gmail.com";
 const Password = "uwficymusyjbbsze";
 const SMTPSecure = "tls";
 const Port = 587;
-const Name = "FLATSHOP";
+const Name = "HỆ THỐNG UED";
 const Email = "pn.flatshop@gmail.com";

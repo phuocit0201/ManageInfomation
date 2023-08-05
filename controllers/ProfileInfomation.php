@@ -139,6 +139,14 @@ class ProfileInfomation extends Controller
             $date = $this->setTimeStatusProfile($_POST['data']['status'], $profileType);
             $data = array_merge($date, $params);
             if ($this->profileInfomationModel->update($data, ['id' => $id])) {
+                if ($data['status'] == STATUS_PROFILE_INFO[5]['value']) {
+                    $dataEmail = [
+                        'email' => $params['email'],
+                        'subject' => SUBJECT_RECEIVED_PROFILE,
+                        'body' => '<h1 style="color:red;">Bạn đã nhận hồ sơ</h1>'
+                    ];
+                    sendEmail($dataEmail);
+                }
                 $_SESSION['notification'] = [
                     'type' => 'success',
                     'messager' => UPDATE_SUCCESS
@@ -213,12 +221,6 @@ class ProfileInfomation extends Controller
             $fileName = url_excel . NAME_PROFILE_EXCEL;
             $writerExcel->save($fileName);
     
-            // header("Content-Type:   application/vnd.ms-excel; charset=utf-8");
-            // header("Content-Disposition: attachment; filename=$excelName");  //File name extension was wrong
-            // header("Expires: 0");
-            // header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-            // header("Cache-Control: private", false);
-            // readfile($fileName);
             $response = [
                 'status' => true,
                 'url' => base . $fileName,
@@ -290,4 +292,5 @@ class ProfileInfomation extends Controller
                 return $data;
         }
     }
+
 }
