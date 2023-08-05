@@ -7,7 +7,6 @@ body {
     margin: 0px;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    perspective: 800px;
 }
 
 .timeline {
@@ -18,19 +17,41 @@ body {
 
 .timeline .timeline-item {
     position: relative;
+    margin: 0 -32px;
+    padding: 0 32px 16px;
+    left: -1px;
 }
 
 .timeline .timeline-item:after {
     position: absolute;
     display: block;
     top: 0;
-}
-
-.timeline .timeline-item:after {
+    left: -6px;
     background-color: hsl(0, 0%, 90%);
-    left: -38px;
     border-radius: 50%;
     height: 11px;
     width: 11px;
     content: "";
+}
+
+.timeline .active.timeline-item {
+    border-left: 1px solid #4caf50;
+}
+
+.timeline .active.timeline-item:after {
+    background-color: #4caf50;
+}
+
+.timeline .active.timeline-item>* {
+    color: #4caf50;
+}
+
+.timeline .timeline-item>p,
+.timeline .timeline-item>pre {
+    display: none;
+}
+
+.timeline .timeline-item.active>p,
+.timeline .timeline-item.active>pre {
+    display: block;
 }

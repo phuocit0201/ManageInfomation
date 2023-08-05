@@ -23,28 +23,30 @@
                     <p class="fw-bold fs-5 d-inline m-0 px-4 position-absolute top-0 start-50 translate-middle bg-white text-capitalize" style="white-space: nowrap;">Thông tin người nộp</p>
                     <div class="row my-3 p-4 border border-2 border-dark-subtle rounded">
                         <div class="col-md-4 mb-4">
-                            <label for="full_name" class="form-label">Họ và Tên</label>
+                            <label for="full_name" class="form-label">Họ và Tên<span style="color: red;"> *</span></label>
                             <input required name="data[full_name]" type="text" value="<?= getOldValue('full_name') ?>" id="full_name" class="form-control">
                         </div>
                         <div class="col-md-4 mb-4">
-                            <label for="phone_number" class="form-label">Số điện thoại</label>
+                            <label for="phone_number" class="form-label">Số điện thoại<span style="color: red;"> *</span></label>
                             <input required name="data[phone_number]" type="tel" value="<?= getOldValue('phone_number') ?>" id="phone_number" class="form-control">
                         </div>
                         <div class="col-md-4 mb-4">
-                            <label for="mail" class="form-label">Email</label>
+                            <label for="mail" class="form-label">Email<span style="color: red;"> *</span></label>
                             <input required name="data[email]" type="email" value="<?= getOldValue('email') ?>" id="email" class="form-control">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="organization" class="form-label">Đơn vị</label>
+                            <label for="organization" class="form-label">Đơn vị<span style="color: red;"> *</span></label>
                             <select required name="data[organization]" id="organization" class="form-select" value="<?= getOldValue('organization') ?>">
+                                <option value="">Chọn Đơn vị</option>
                                 <?php foreach ($data['organization'] as $item) { ?>
                                     <option><?= $item['name'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="branch" class="form-label">Chi bộ</label>
+                            <label for="branch" class="form-label">Chi bộ<span style="color: red;"> *</span></label>
                             <select required name="data[branch]" id="branch" class="form-select" value="<?= getOldValue('branch') ?>">
+                                <option value="">Chọn Chi bộ</option>
                                 <?php foreach ($data['branch'] as $item) { ?>
                                     <option><?= $item['name'] ?></option>
                                 <?php } ?>
@@ -56,8 +58,9 @@
                     <p class="fw-bold fs-5 d-inline m-0 px-4 position-absolute top-0 start-50 translate-middle bg-white text-capitalize" style="white-space: nowrap;">Chi tiết hồ sơ</p>
                     <div class="row my-3 p-4 border border-2 border-dark-subtle rounded">
                         <div class="col-md-4 mb-3">
-                            <label for="type_profile" class="form-label">Chọn loại hồ sơ</label>
+                            <label for="type_profile" class="form-label">Chọn loại hồ sơ<span style="color: red;"> *</span></label>
                             <select required name="data[type_profile]" id="type_profile" class="form-select">
+                                <option value="">Chọn loại hồ sơ</option>
                                 <?php foreach ($data['type-profile'] as $item) { ?>
                                     <option><?= $item['name'] ?></option>
                                 <?php } ?>
@@ -65,12 +68,12 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="name_profile" class="form-label">Tên loại hồ sơ</label>
+                            <label for="name_profile" class="form-label">Tên loại hồ sơ<span style="color: red;"> *</span></label>
                             <input required name="data[name_profile]" type="text" value="<?= getOldValue('name_profile') ?>" id="name_profile" class="form-control">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="quantity_profile" class="form-label">Số lượng hồ sơ</label>
-                            <input required name="data[quantity_profile]" type="number" value="<?= getOldValue('quantity_profile') ?>" id="quantity_profile" class="form-control">
+                            <label for="quantity_profile" class="form-label">Số lượng hồ sơ<span style="color: red;"> *</span></label>
+                            <input required min="1" name="data[quantity_profile]" type="number" value="<?= getOldValue('quantity_profile') ?>" id="quantity_profile" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -78,8 +81,9 @@
                     <p class="fw-bold fs-5 d-inline m-0 px-4 position-absolute top-0 start-50 translate-middle bg-white text-capitalize" style="white-space: nowrap;">Thông tin người nhận</p>
                     <div class="row my-4 p-4 border border-2 border-dark-subtle rounded">
                         <div class="col-md-6 mb-3">
-                            <label for="reciever" class="form-label">Người tiếp nhận</label>
+                            <label for="reciever" class="form-label">Người tiếp nhận<span style="color: red;"> *</span></label>
                             <select required name="data[reciever]" id="reciever" class="form-select">
+                                <option value="">Chọn người tiếp nhận</option>
                                 <?php foreach ($data['receive-person'] as $item) { ?>
                                     <option><?= $item['name'] ?></option>
                                 <?php } ?>
@@ -87,8 +91,9 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="contact_method" class="form-label">Phương thức liên hệ</label>
+                            <label for="contact_method" class="form-label">Phương thức liên hệ<span style="color: red;"> *</span></label>
                             <select required name="data[contact_method]" id="contact_method" class="form-select">
+                                <option value="">Chọn phương thức liên hệ</option>
                                 <?php foreach ($data['contact-method'] as $item) { ?>
                                     <option><?= $item['name'] ?></option>
                                 <?php } ?>

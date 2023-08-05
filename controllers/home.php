@@ -106,7 +106,7 @@ class Home extends Controller
     {
         $data = [];
         if (isset($_GET['search'])) {
-            $data["profile"] = $this->profileInfomationModel->find(['id' => $_GET['search']]);
+            $data["profiles"] = $this->profileInfomationModel->search($_GET['search']);
             $data["keyword"] =  $_GET['search'];
         }
         $this->title = 'Tra cứu hồ sơ';

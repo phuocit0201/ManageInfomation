@@ -18,117 +18,127 @@
             <fieldset>
                 <div class="text-center">
                     <img style="width: 100%;" src="public/images/job.svg" alt="" srcset="">
-                    <h2 class="m-3 text-primary">TRA CỨU HỒ SƠ</h2>
+                    <h3 class="my-5 text-primary fw-bolder">TRA CỨU THÔNG TIN HỒ SƠ</h3>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Mã hồ sơ</span>
-                    <input type="text" name="search" class="form-control" value="<?= $data["keyword"] ?? '' ?>" required>
+                    <input type="text" name="search" class="form-control" value="<?= $data["keyword"] ?? '' ?>" required placeholder="Nhập mã hồ sơ hoặc số điện thoại">
                     <button type="submit" class="input-group-text btn-primary">Tra cứu</button>
                 </div>
             </fieldset>
         </form>
-    </div>
-    <?php
-    if (isset($data["profile"]) && empty($data["profile"]) && isset($data["keyword"])) { ?>
-        <div class="container">
+        <?php
+        if (isset($data["profiles"]) && empty($data["profiles"]) && isset($data["keyword"])) { ?>
             <h2 class="text-danger text-center">KHÔNG TÌM THẤY HỒ SƠ</h2>
-        </div>
-    <?php
-    } else if (isset($data["profile"]) && !empty($data["profile"]) && isset($data["keyword"])) {
-    ?>
-        <div class="container">
-            <div class="col-8">
-                <table class="table mt-3">
-                    <tbody>
+        <?php
+        } else if (isset($data["profiles"]) && count($data["profiles"]) > 1 && isset($data["keyword"])) {
+        ?>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Mã hồ sơ</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($data["profiles"] as $profile) { ?>
                         <tr>
-                            <th scope="row" class="w-25">Họ và tên</th>
-                            <td class="w-75"><?= $data["profile"]["full_name"] ?></td>
+                            <th scope="row"><?= $profile['id'] ?></th>
+                            <td><?= $profile['full_name'] ?></td>
+                            <td><?= $profile['phone_number'] ?></td>
+                            <td><?= $profile['email'] ?></td>
+                            <td><a class="btn btn-primary" href="?search=<?= $profile['id'] ?>"><i class="far fa-eye"></i></a></td>
                         </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Số điện thoại</th>
-                            <td class="w-75"><?= $data["profile"]["phone_number"] ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Email</th>
-                            <td class="w-75"><?= $data["profile"]["email"] ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Đơn vị</th>
-                            <td class="w-75"><?= $data["profile"]["organization"] ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Chi bộ</th>
-                            <td class="w-75"><?= $data["profile"]["branch"] ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Loại hồ sơ</th>
-                            <td class="w-75"><?= $data["profile"]["type_profile"] ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Số lượng hồ sơ</th>
-                            <td class="w-75"><?= $data["profile"]["quantity_profile"] ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Người tiếp nhận</th>
-                            <td class="w-75"><?= $data["profile"]["reciever"] ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="w-25">Phương thức liên hệ</th>
-                            <td class="w-75"><?= $data["profile"]["contact_method"] ?></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <?php } ?>
+                </tbody>
+            </table>
+        <?php
+        } else {
+        ?>
+            <h4 class="fw-bold">Thông tin hồ sơ</h4>
+            <div class=" row p-4 m-0 mb-4 bg-light bg-gradient border rounded shadow">
+                <div class="col-md-3">
+                    <div class="row">
+                        <b class="col-md-12 col-5">Họ và tên</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["full_name"] ?></p>
+                    </div>
+                    <div class="row">
+                        <b class="col-md-12 col-5">Số điện thoại</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["phone_number"] ?></p>
+                    </div>
+                    <div class="row">
+                        <b class="col-md-12 col-5">Email</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["email"] ?></p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <b class="col-md-12 col-5">Đơn vị</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["organization"] ?></p>
+                    </div>
+                    <div class="row">
+                        <b class="col-md-12 col-5">Chi bộ</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["branch"] ?></p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <b class="col-md-12 col-5">Loại hồ sơ</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["type_profile"] ?></p>
+                    </div>
+                    <div class="row">
+                        <b class="col-md-12 col-5">Số lượng hồ sơ</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["quantity_profile"] ?></p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <b class="col-md-12 col-5">Người tiếp nhận</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["reciever"] ?></p>
+                    </div>
+                    <div class="row">
+                        <b class="col-md-12 col-5">Phương thức liên hệ</b>
+                        <p class="col-md-12 col-7 text-nowrap"><?= $data["profiles"][0]["contact_method"] ?></p>
+                    </div>
+                </div>
             </div>
 
-            <section class="py-5">
+            <!-- Section: Timeline -->
+            <h4 class="fw-bold">Trạng thái hồ sơ</h4>
+            <section class="p-4 m-0 mb-4 bg-light bg-gradient border rounded shadow">
                 <ul class="timeline">
-                    <li class="timeline-item mb-5">
-                        <h5 class="fw-bold">Our company starts its operations</h5>
-                        <p class="text-muted mb-2 fw-bold">11 March 2020</p>
-                        <p class="text-muted">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                            necessitatibus adipisci, ad alias, voluptate pariatur officia
-                            repellendus repellat inventore fugit perferendis totam dolor
-                            voluptas et corrupti distinctio maxime corporis optio?
-                        </p>
+                    <li class="timeline-item <?php if (!empty($data["profiles"][0]['created_at'])) echo 'active'; ?>">
+                        <h5 class="fw-bold">Chờ kiểm duyệt</h5>
+                        <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['created_at'])) ?></p>
                     </li>
-
-                    <li class="timeline-item mb-5">
-                        <h5 class="fw-bold">First customer</h5>
-                        <p class="text-muted mb-2 fw-bold">19 March 2020</p>
-                        <p class="text-muted">
-                            Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
-                            aliquet laoreet sapien, eget pulvinar lectus maximus vel.
-                            Phasellus suscipit porta mattis.
-                        </p>
+                    <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_1'])) echo 'active'; ?>">
+                        <h5 class="fw-bold">Đã nhận hồ sơ</h5>
+                        <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_1'])) ?></p>
                     </li>
-
-                    <li class="timeline-item mb-5">
-                        <h5 class="fw-bold">Our team exceeds 10 people</h5>
-                        <p class="text-muted mb-2 fw-bold">24 June 2020</p>
-                        <p class="text-muted">
-                            Orci varius natoque penatibus et magnis dis parturient montes,
-                            nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
-                            facilisis erat pellentesque nec. Duis et dui maximus dui aliquam
-                            convallis. Quisque consectetur purus erat, et ullamcorper sapien
-                            tincidunt vitae.
-                        </p>
+                    <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_2'])) echo 'active'; ?>">
+                        <h5 class="fw-bold">Đang xử lý</h5>
+                        <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_2'])) ?></p>
                     </li>
-
-                    <li class="timeline-item mb-5">
-                        <h5 class="fw-bold">Earned the first million $!</h5>
-                        <p class="text-muted mb-2 fw-bold">15 October 2020</p>
-                        <p class="text-muted">
-                            Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
-                            et urna sit amet massa dapibus tristique non finibus ligula. Nam
-                            pharetra libero nibh, id feugiat tortor rhoncus vitae. Ut suscipit
-                            vulputate mattis.
-                        </p>
+                    <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_3'])) echo 'active'; ?>">
+                        <h5 class="fw-bold">Trả hồ sơ về</h5>
+                        <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_3'])) ?></p>
+                    </li>
+                    <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_4'])) echo 'active'; ?>">
+                        <h5 class="fw-bold">Chỉnh sửa và bổ sung</h5>
+                        <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_4'])) ?></p>
+                        <pre class="text-muted" style="font-size: 16px;"><?= $data["profiles"][0]['note'] ?></pre>
+                    </li>
+                    <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_5'])) echo 'active'; ?>">
+                        <h5 class="fw-bold">Đã nhận lại hồ sơ từ VPDU</h5>
+                        <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_5'])) ?></p>
                     </li>
                 </ul>
             </section>
-        </div>
-    <?php } ?>
+            <!-- Section: Timeline -->
+        <?php } ?>
+    </div>
 
     <script>
         $(document).ready(function() {
