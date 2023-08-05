@@ -135,7 +135,7 @@
                         <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_5'])) ?></p>
                     </li>
                     <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_6'])) echo 'active'; ?>">
-                        <h5 class="fw-bold">Hoàn tất hồ sơ và lưu tại văn phòng</h5>
+                        <h5 class="fw-bold">Hoàn tất hồ sơ <?php (!empty($data["profiles"][0]['date_5'])) ? '' : 'và lưu tại văn phòng'; ?></h5>
                         <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_6'])) ?></p>
                     </li>
                 </ul>
