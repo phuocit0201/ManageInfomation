@@ -57,7 +57,7 @@
                 <div class="container position-relative mb-5">
                     <p class="fw-bold fs-5 d-inline m-0 px-4 position-absolute top-0 start-50 translate-middle bg-white text-capitalize" style="white-space: nowrap;">Chi tiết hồ sơ</p>
                     <div class="row my-3 p-4 border border-2 border-dark-subtle rounded">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="type_profile" class="form-label">Chọn loại hồ sơ<span style="color: red;"> *</span></label>
                             <select required name="data[type_profile]" id="type_profile" class="form-select">
                                 <option value="">Chọn loại hồ sơ</option>
@@ -66,13 +66,13 @@
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="name_profile" class="form-label">Tên loại hồ sơ<span style="color: red;"> *</span></label>
-                            <input required name="data[name_profile]" type="text" value="<?= getOldValue('name_profile') ?>" id="name_profile" class="form-control">
-                        </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="quantity_profile" class="form-label">Số lượng hồ sơ<span style="color: red;"> *</span></label>
                             <input required min="1" name="data[quantity_profile]" type="number" value="<?= getOldValue('quantity_profile') ?>" id="quantity_profile" class="form-control">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="name_profile" class="form-label">Chi tiết hồ sơ<span style="color: red;"> *</span></label>
+                            <textarea cols="30" rows="10" required name="data[name_profile]" type="text" value="<?= getOldValue('name_profile') ?>" id="name_profile" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>

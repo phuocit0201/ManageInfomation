@@ -32,10 +32,6 @@
                         <input type="text" disabled value="<?= $data['profile_infomation']['type_profile'] ?>" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Tên Hồ Sơ</label>
-                        <input type="text" disabled value="<?= $data['profile_infomation']['name_profile'] ?>" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label>Số Lượng Hồ Sơ</label>
                         <input type="text" disabled value="<?= $data['profile_infomation']['quantity_profile'] ?>" class="form-control">
                     </div>
@@ -55,10 +51,14 @@
                         <label>Thời Gian Nộp</label>
                         <input type="text" disabled value="<?= $data['profile_infomation']['created_at'] ?>" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label>Chi Tiết Hồ Sơ</label>
+                        <textarea id="" cols="30" rows="10" disabled class="form-control"><?= $data['profile_infomation']['name_profile'] ?></textarea>
+                    </div>
                     <?php if (!empty($data['profile_infomation']['note'])) { ?>
                         <div class="form-group">
                             <label>Nội dung bổ sung hồ sơ</label>
-                            <textarea type="text" disabled value="<?= $data['profile_infomation']['note'] ?>" class="form-control">
+                            <textarea cols="30" rows="10" type="text" disabled class="form-control"><?= $data['profile_infomation']['note'] ?></textarea>
                         </div>
                     <?php } ?>
                     <div class="text-center" style="padding: 10px;">
