@@ -140,3 +140,4 @@ const NAME_PROFILE_EXCEL = 'HOSO.xlsx';
 const SUBJECT_RECEIVED_PROFILE = 'Đã Nhận Hồ Sơ';
 const SUBJECT_EDIT_PROFILE = 'Chỉnh Sửa Và Bổ Sung Hồ Sơ';
 const SUBJECT_COMPLETED_PROFILE = 'Hoàn Tất Hồ Sơ';
+const SUBJECT_PROFILE = 'Nộp Hồ Sơ Thành Công';
