@@ -139,28 +139,7 @@ class ProfileInfomation extends Controller
             $date = $this->setTimeStatusProfile($_POST['data']['status'], $profileType);
             $data = array_merge($date, $params);
             if ($this->profileInfomationModel->update($data, ['id' => $id])) {
-                if ($data['status'] == STATUS_PROFILE_INFO[5]['value']) {
-                    $dataEmail = [
-                        'email' => $params['email'],
-                        'subject' => SUBJECT_RECEIVED_PROFILE,
-                        'body' => '<h1 style="color:red;">Bạn đã nhận hồ sơ</h1>'
-                    ];
-                    sendEmail($dataEmail);
-                } elseif ($data['status'] == STATUS_PROFILE_INFO[4]['value']) {
-                    $dataEmail = [
-                        'email' => $params['email'],
-                        'subject' => SUBJECT_EDIT_PROFILE,
-                        'body' => '<pre style="color:red;">' . $params['note'] . '</pre>'
-                    ];
-                    sendEmail($dataEmail);
-                } elseif ($data['status'] == STATUS_PROFILE_INFO[6]['value']) {
-                    $dataEmail = [
-                        'email' => $params['email'],
-                        'subject' => SUBJECT_COMPLETED_PROFILE,
-                        'body' => '<p>Hồ sơ của bạn đã được hoàn tất</p>'
-                    ];
-                    sendEmail($dataEmail);
-                }
+                $this->sendEmailNotify($data, $data['status']);
                 $_SESSION['notification'] = [
                     'type' => 'success',
                     'messager' => UPDATE_SUCCESS
@@ -234,7 +213,7 @@ class ProfileInfomation extends Controller
             NAME_PROFILE_EXCEL;
             $fileName = url_excel . NAME_PROFILE_EXCEL;
             $writerExcel->save($fileName);
-    
+
             $response = [
                 'status' => true,
                 'url' => base . $fileName,
@@ -319,4 +298,126 @@ class ProfileInfomation extends Controller
         }
     }
 
+    private function sendEmailNotify($data, $status)
+    {
+        $emailContent = [];
+        switch ($status) {
+            case STATUS_PROFILE_INFO[0]['value']:
+            case STATUS_PROFILE_INFO[1]['value']:
+            case STATUS_PROFILE_INFO[2]['value']:
+            case STATUS_PROFILE_INFO[3]['value']:
+                return;
+            case STATUS_PROFILE_INFO[4]['value']:
+                $body = $this->renderHtmlEditProfile($data);
+                $emailContent = [
+                    'email' => $data['email'],
+                    'subject' => SUBJECT_EDIT_PROFILE,
+                    'body' => $body
+                ];
+                break;
+            case STATUS_PROFILE_INFO[5]['value']:
+                $body = $this->renderHtmlReceivedProfile($data);
+                $emailContent = [
+                    'email' => $data['email'],
+                    'subject' => SUBJECT_RECEIVED_PROFILE,
+                    'body' => $body
+                ];
+                break;
+            case STATUS_PROFILE_INFO[6]['value']:
+                $body = $this->renderHtmlSaveProfile($data);
+                $emailContent = [
+                    'email' => $data['email'],
+                    'subject' => SUBJECT_RECEIVED_PROFILE,
+                    'body' => $body
+                ];
+                break;
+        }
+
+        sendEmail($emailContent);
+    }
+
+    private function renderHtmlEditProfile($data)
+    {
+        return '
+            <div style="width: 100%;background: #fafafa;padding: 50px 0px;">
+                <div style="max-width: 700px; border: 1px solid #999; padding: 20px;margin: 0 auto;background: #fff;">
+                    <div style="text-align: center;">
+                        <img style="width: 100px;" src="https://i.imgur.com/w8b4ba4.jpg" alt="">
+                        <img style="width: 100px;" src="https://i.imgur.com/4r7yGVD.png" alt="">
+                    </div>
+                    <div>
+                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào đồng chí '. $data['name'] .'</p>
+                        <p style="color: #888; font-size: 16px;">Văn phòng Đảng ủy đã nhận và kiểm tra hồ sơ của Đồng Chí và có yêu cầu Đ/C chỉnh sửa và bổ sung các ý sau</p>
+                        <pre style="color: #888; font-size: 16px;">'. $data['note'] .'</pre>
+                        <p style="color: #888; font-size: 16px;">Các Đ/C lưu ý bổ sung các nội dung được nêu trên về văn phòng Đảng ủy để có thể hoàn thiện hồ sơ</p>
+                        <p style="color: #888; font-size: 16px;">Trân trọng</p>
+                    </div>
+                    <div>
+                        <h3 style="color: red; font-size: 20px;">VĂN PHÒNG ĐẢNG ỦY</h3>
+                        <p style="color: #888; font-weight: 600;font-size: 16px;">Trường Đại học Sư phạm Kỹ thuật Hồ Chí Minh</p>
+                        <p style="color: #888; font-weight: 600;font-size: 16px;">Phòng A1001 - Tầng 10 Tòa nhà trung tâm</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Email:</span> vp_danguy@hcmute.udn.vn</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Điện thoại:</span>02837221223(8231)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Cá nhân:</span> 0961159192(Mr.Đức)-0983199982(Ms.Nam)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Website:</span> danbo.hcmute.udn.vn</p>
+                    </div>
+                </div>
+            </div>';
+    }
+
+    private function renderHtmlReceivedProfile($data)
+    {
+        return '
+            <div style="width: 100%;background: #fafafa;padding: 50px 0px;">
+                <div style="max-width: 700px; border: 1px solid #999; padding: 20px;margin: 0 auto;background: #fff;">
+                    <div style="text-align: center;">
+                        <img style="width: 100px;" src="https://i.imgur.com/w8b4ba4.jpg" alt="">
+                        <img style="width: 100px;" src="https://i.imgur.com/4r7yGVD.png" alt="">
+                    </div>
+                    <div>
+                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào đồng chí '. $data['full_name'] .'</p>
+                        <p style="color: #888; font-size: 16px;">Văn phòng Đảng ủy <b>xác nhận</b> Đ/C đã nhận lại hồ sơ từ VPĐU với mã hồ sơ là '. $data['id'] .' tại Văn phòng Đảng ủy vào lúc '. $data['date_5'] .'</p>
+                        <p style="color: blue; font-size: 16px;"><i>Mọi thắc mắc về hồ sơ có thể liên hệ trực tiếp Văn phòng Đảng ủy</i></p>
+                        <p style="color: #888; font-size: 16px;">Trân trọng</p>
+                    </div>
+                    <div>
+                        <h3 style="color: red; font-size: 20px;">VĂN PHÒNG ĐẢNG ỦY</h3>
+                        <p style="color: #888; font-weight: 600;font-size: 16px;">Trường Đại học Sư phạm Kỹ thuật Hồ Chí Minh</p>
+                        <p style="color: #888; font-weight: 600;font-size: 16px;">Phòng A1001 - Tầng 10 Tòa nhà trung tâm</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Email:</span> vp_danguy@hcmute.udn.vn</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Điện thoại:</span>02837221223(8231)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Cá nhân:</span> 0961159192(Mr.Đức)-0983199982(Ms.Nam)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Website:</span> danbo.hcmute.udn.vn</p>
+                    </div>
+                </div>
+            </div>';
+    }
+
+    private function renderHtmlSaveProfile($data)
+    {
+        return '
+            <div style="width: 100%;background: #fafafa;padding: 50px 0px;">
+                <div style="max-width: 700px; border: 1px solid #999; padding: 20px;margin: 0 auto;background: #fff;">
+                    <div style="text-align: center;">
+                        <img style="width: 100px;" src="https://i.imgur.com/w8b4ba4.jpg" alt="">
+                        <img style="width: 100px;" src="https://i.imgur.com/4r7yGVD.png" alt="">
+                    </div>
+                    <div>
+                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào đồng chí '. $data['full_name'] .'</p>
+                        <p style="color: #888; font-size: 16px;">Văn phòng Đảng ủy <b>Đã tiếp nhận và xử lý hoàn thành hồ sơ của Đ/C</b> với mã hồ sơ là '. $data['id'] .'. <b>Hồ sơ đã được lưu giữ tại</b> Văn phòng Đảng ủy vào lúc '. $data['date_6'] .'</p>
+                        <p style="color: blue; font-size: 16px;"><i>Mọi thắc mắc về hồ sơ có thể liên hệ trực tiếp Văn phòng Đảng ủy</i></p>
+                        <p style="color: #888; font-size: 16px;">Trân trọng</p>
+                    </div>
+                    <div>
+                        <h3 style="color: red; font-size: 20px;">VĂN PHÒNG ĐẢNG ỦY</h3>
+                        <p style="color: #888; font-weight: 600;font-size: 16px;">Trường Đại học Sư phạm Kỹ thuật Hồ Chí Minh</p>
+                        <p style="color: #888; font-weight: 600;font-size: 16px;">Phòng A1001 - Tầng 10 Tòa nhà trung tâm</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Email:</span> vp_danguy@hcmute.udn.vn</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Điện thoại:</span>02837221223(8231)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Cá nhân:</span> 0961159192(Mr.Đức)-0983199982(Ms.Nam)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Website:</span> danbo.hcmute.udn.vn</p>
+                    </div>
+                </div>
+            </div>';
+    }
 }
