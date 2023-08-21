@@ -17,7 +17,7 @@
         <form action="<?= base ?>tra-cuu-thong-tin" method="GET">
             <fieldset>
                 <div class="text-center">
-                    <img style="width: 100%;" src="public/images/job.svg" alt="" srcset="">
+                    <img style="width: 100%;" src="public/images/van-phong-dien-tu-nen-do-16.svg" alt="" srcset="">
                     <h3 class="my-5 text-primary fw-bolder">TRA CỨU THÔNG TIN HỒ SƠ</h3>
                 </div>
                 <div class="input-group mb-3">
@@ -131,7 +131,7 @@
                         <pre class="text-muted" style="font-size: 16px;"><?= $data["profiles"][0]['note'] ?></pre>
                     </li>
                     <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_5'])) echo 'active'; ?>">
-                        <h5 class="fw-bold">Đã nhận lại hồ sơ từ VPDU</h5>
+                        <h5 class="fw-bold">Đã nhận lại hồ sơ từ VPĐU</h5>
                         <p class="text-muted mb-2 fw-bold"><?= date("H:i:s d-m-Y", strtotime($data["profiles"][0]['date_5'])) ?></p>
                     </li>
                     <li class="timeline-item <?php if (!empty($data["profiles"][0]['date_6'])) echo 'active'; ?>">
