@@ -292,7 +292,7 @@ class ProfileInfomation extends Controller
                 $data['date_2'] = (empty($profile['date_2'])) ? $currentTime : $profile['date_2'];
                 $data['date_3'] = (empty($profile['date_3'])) ? $currentTime : $profile['date_3'];
                 $data['date_4'] = (empty($profile['date_4'])) ? $currentTime : $profile['date_4'];
-                $data['date_5'] = $profile['date_5'];
+                $data['date_5'] = null;
                 $data['date_6'] = $currentTime;
                 return $data;
         }

@@ -46,6 +46,8 @@
                                                 <span class="badge badge-success"><?= STATUS_PROFILE_INFO[4]['text'] ?></span>
                                             <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[5]['value']) { ?>
                                                 <span class="badge badge-success"><?= STATUS_PROFILE_INFO[5]['text'] ?></span>
+                                            <?php } elseif ($item['status'] == STATUS_PROFILE_INFO[6]['value']) { ?>
+                                                <span class="badge badge-success"><?= STATUS_PROFILE_INFO[6]['text'] ?></span>
                                             <?php } ?>
 
                                         </td>
