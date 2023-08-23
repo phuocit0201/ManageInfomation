@@ -1,4 +1,5 @@
 <?php
+const DIR = __DIR__;
 session_start();
 $folders = ['./libraries/facades/*.php', './helpers/*.php', './middleware/*.php', './models/*.php', './libraries/PHPExcel/*.php'];
 foreach ($folders as $folder) {

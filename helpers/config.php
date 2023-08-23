@@ -18,3 +18,4 @@ const SMTPSecure = "tls";
 const Port = 587;
 const Name = "HỆ THỐNG UED";
 const Email = "pn.flatshop@gmail.com";
+const PRODUCTION = true;

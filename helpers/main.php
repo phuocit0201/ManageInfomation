@@ -6,25 +6,26 @@ class Main
     //tạo ra các màn hình và hàm mặc định
     protected $controller;
     protected $action;
+    protected $temp;
 
     public function __construct()
     {
         $this->checkConfigUrl();
-
         $path = $this->getPathRequest();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->initApplication(Route::routesPost(), $path);
         } else {
             $this->initApplication(Route::routesGet(), $path);
         }
-        
-        if (file_exists("./" . $this->controller . ".php")) {
-            require_once "./" . $this->controller . ".php";
+
+        if (file_exists($this->getUrlController($this->controller))) {
+            require_once $this->getUrlController($this->controller);
             $this->controller = new $this->controller;
         } else {
             $this->routeNotFound();
             return;
         }
+
         if (method_exists($this->controller, $this->action)) {
             call_user_func_array([$this->controller, $this->action], []);
         } else {
@@ -58,7 +59,7 @@ class Main
     {
         $this->controller = \Controllers\Errors::class;
         $this->action = 'error404';
-        require_once "./" . $this->controller . ".php";
+        require_once $this->getUrlController($this->controller);
         $this->controller = new $this->controller;
         call_user_func_array([$this->controller, $this->action], []);
     }
@@ -88,5 +89,10 @@ class Main
         }
     }
 
-
+    public function getUrlController($controller)
+    {
+        $this->temp = str_replace("\\", "/", $controller);
+        $this->temp = str_replace("Controller", "controller", $this->temp);
+        return DIR . '/' . $this->temp . ".php";
+    }
 }
