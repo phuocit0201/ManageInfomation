@@ -1,5 +1,5 @@
 <?php
-const base = "http://localhost/ManageInfomation/";
+const base = "http://192.168.0.189/ManageInfomation/";
 const url = "public/upload/";
 const url_excel = "public/build/excel/";
 const server_name_db = "103.221.222.96";
@@ -16,6 +16,5 @@ const Username = "pn.flatshop@gmail.com";
 const Password = "uwficymusyjbbsze";
 const SMTPSecure = "tls";
 const Port = 587;
-const Name = "HỆ THỐNG UED";
+const Name = "HỆ THỐNG QUẢN LÝ VĂN BẢN ĐẢNG ỦY";
 const Email = "pn.flatshop@gmail.com";
-const PRODUCTION = true;
