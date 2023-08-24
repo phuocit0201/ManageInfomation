@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label>Thời Gian Nộp</label>
-                        <input type="text" disabled value="<?= $data['profile_infomation']['created_at'] ?>" class="form-control">
+                        <input type="text" disabled value="<?= date("H:i:s d-m-Y", strtotime($data['profile_infomation']['created_at']))  ?>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Chi Tiết Hồ Sơ</label>

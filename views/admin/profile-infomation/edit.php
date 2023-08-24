@@ -101,7 +101,7 @@
                     </div>
                     <div class="form-group">
                         <label>Thời Gian Nộp</label>
-                        <input type="text" disabled value="<?= $data['profile_infomation']['created_at'] ?>" class="form-control">
+                        <input type="text" disabled value="<?= date("H:i:s d-m-Y", strtotime($data['profile_infomation']['created_at'])) ?>" class="form-control">
                     </div>
                     <div class="text-center" style="padding: 10px;">
                         <a href="<?= route('admin.profile_infomation_show') . '?id=' . $data['profile_infomation']['id'] ?>" class="btn btn-primary" style="margin-right: 30px;">

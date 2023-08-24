@@ -31,7 +31,7 @@
                                         <td><?= $item['full_name'] ?></td>
                                         <td><?= $item['phone_number'] ?></td>
                                         <td><?= $item['type_profile'] ?></td>
-                                        <td><?= $item['created_at'] ?></td>
+                                        <td><?= date("H:i:s d-m-Y", strtotime($item['created_at'])) ?></td>
                                         <td>
                                             <?php
                                             if ($item['status'] == STATUS_PROFILE_INFO[0]['value']) { ?>
