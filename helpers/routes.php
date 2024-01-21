@@ -10,9 +10,15 @@ use Controllers\ProfileType;
 use Controllers\Dashboard;
 use Controllers\Organization;
 use Controllers\ProfileInfomation;
+use Controllers\ReturnProfile;
+use Controllers\Invoice;
 use Controllers\ReceivePerson;
+use Controllers\Certificate;
+use Controllers\Search;
 use Middleware\AdminAuth;
 use Middleware\AdminGuest;
+use Controllers\SumLink;
+
 
 Route::get('/', Home::class, 'index');
 
@@ -66,4 +72,35 @@ Route::get('nhap-thong-tin-ho-so', Home::class, 'create')->name('enter_profile')
 Route::post('nhap-thong-tin-ho-so', Home::class, 'store');
 Route::get('tra-cuu-thong-tin', Home::class, 'search')->name('search_profile');
 
+Route::get('admin/certificate', Certificate::class, 'index')->middleware(AdminAuth::class)->name('admin.certificate');
+Route::post('admin/certificate/store', Certificate::class, 'store')->middleware(AdminAuth::class)->name('admin.certificate_store');
+Route::get('admin/certificate/show', Certificate::class, 'show')->middleware(AdminAuth::class)->name('admin.certificate_show');
+Route::post('admin/certificate/update', Certificate::class, 'update')->middleware(AdminAuth::class)->name('admin.certificate_update');
+Route::post('admin/certificate/delete', Certificate::class, 'delete')->middleware(AdminAuth::class)->name('admin.certificate_delete');
+
+Route::get('admin/return-profile', ReturnProfile::class, 'index')->middleware(AdminAuth::class)->name('admin.return-profile');
+Route::get('admin/return-profile/show', ReturnProfile::class, 'show')->middleware(AdminAuth::class)->name('admin.return-profile_show');
+Route::get('admin/return-profile/edit', ReturnProfile::class, 'edit')->middleware(AdminAuth::class)->name('admin.return-profile_edit');
+Route::post('admin/return-profile/edit', ReturnProfile::class, 'update')->middleware(AdminAuth::class);
+Route::post('admin/return-profile/delete', ReturnProfile::class, 'delete')->middleware(AdminAuth::class)->name('admin.return-profile_delete');
+Route::post('admin/return-profile/export-excel', ReturnProfile::class, 'exportExcel')->middleware(AdminAuth::class)->name('admin.return-profile_export_excel');
+Route::get('admin/return-profile/create', ReturnProfile::class, 'create')->middleware(AdminAuth::class)->name('admin.return-profile-create');
+Route::post('admin/return-profile/create', ReturnProfile::class, 'store')->middleware(AdminAuth::class);
+
+Route::get('admin/invoice', Invoice::class, 'index')->middleware(AdminAuth::class)->name('admin.invoice');
+Route::get('admin/invoice/show', Invoice::class, 'show')->middleware(AdminAuth::class)->name('admin.invoice_show');
+Route::get('admin/invoice/edit', Invoice::class, 'edit')->middleware(AdminAuth::class)->name('admin.invoice_edit');
+Route::post('admin/invoice/edit', Invoice::class, 'update')->middleware(AdminAuth::class);
+Route::post('admin/invoice/delete', Invoice::class, 'delete')->middleware(AdminAuth::class)->name('admin.invoice_delete');
+Route::post('admin/invoice/export-excel', Invoice::class, 'exportExcel')->middleware(AdminAuth::class)->name('admin.invoice_export_excel');
+Route::get('admin/invoice/create', Invoice::class, 'create')->middleware(AdminAuth::class)->name('admin.invoice-create');
+Route::post('admin/invoice/create', Invoice::class, 'store')->middleware(AdminAuth::class);
+Route::get('admin/invoice/print', Invoice::class, 'printInvoice')->middleware(AdminAuth::class)->name('admin.invoice_print');
+
+
+
+Route::get('admin/sum-link', SumLink::class, 'index')->middleware(AdminAuth::class)->name('admin.sum_link');
+
+Route::get('admin/search', Search::class, 'index')->middleware(AdminAuth::class)->name('admin.search');
+Route::get('admin/search/show', Search::class, 'show')->middleware(AdminAuth::class)->name('admin.search_show');
 

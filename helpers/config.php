@@ -1,5 +1,5 @@
 <?php
-const base = "http://192.168.0.189/ManageInfomation/";
+const base = "http://localhost/ManageInfomation/";
 const url = "public/upload/";
 const url_excel = "public/build/excel/";
 const server_name_db = "103.221.222.96";
@@ -12,9 +12,9 @@ const timezone = "Asia/Ho_Chi_Minh";
 //config email
 const Host = "smtp.gmail.com";
 const SMTPAuth = true;
-const Username = "pn.flatshop@gmail.com";
-const Password = "uwficymusyjbbsze";
+const Username = "vpdu.dientu@hcmute.edu.vn";
+const Password = "ytzkebzpitusbokz";
 const SMTPSecure = "tls";
 const Port = 587;
-const Name = "HỆ THỐNG QUẢN LÝ VĂN BẢN ĐẢNG ỦY";
-const Email = "pn.flatshop@gmail.com";
+const Name = "VĂN PHÒNG ĐIỆN TỬ ĐẢNG ỦY";
+const Email = "vpdu.dientu@hcmute.edu.vn";

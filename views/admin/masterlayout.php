@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="public/plugins/fontawesome-free/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="public/disk2/images/Logo-dang.png" />
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
@@ -63,7 +65,8 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                        aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -78,7 +81,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?=route('admin.dashboard')?>" class="brand-link">
-                <img src="public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Quản Trị Viên</span>
             </a>
 
@@ -87,36 +91,106 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="public/disk2/images/Logo-dang.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="javascript:void(0)" class="d-block"><?= \Helpers\Auth::user('auth-admin')['full_name'] ?></a>
+                        <a href="javascript:void(0)"
+                            class="d-block"><?= \Helpers\Auth::user('auth-admin')['full_name'] ?></a>
                     </div>
                 </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+
                         <li class="nav-item">
-                            <a href="<?= route('admin.dashboard') ?>" class="nav-link <?= (isRoute(route('admin.dashboard'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.dashboard') ?>"
+                                class="nav-link <?= (isRoute(route('admin.dashboard'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Trung Tâm Điều Khiển
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="<?= route('admin.profile_infomation') ?>" class="nav-link <?= (isRoute(route('admin.profile_infomation')) || isRoute(route('admin.profile_infomation_show')) || isRoute(route('admin.profile_infomation_edit'))) ? 'active' : null ?>">
-                                <i class="nav-icon fas fa-id-card-alt"></i>
+                            <a href="<?= route('admin.search') ?>"
+                                class="nav-link <?= (isRoute(route('admin.search'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Quản Lí Hồ Sơ
+                                    Tra dữ liệu đảng viên
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="<?= route('admin.profile_type') ?>" class="nav-link <?= (isRoute(route('admin.profile_type'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.search_show') ?>"
+                                class="nav-link <?= (isRoute(route('admin.search_show'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Hồ sơ chi tiết
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?= route('admin.profile_infomation') ?>"
+                                class="nav-link <?= (isRoute(route('admin.profile_infomation')) || isRoute(route('admin.profile_infomation_show')) || isRoute(route('admin.profile_infomation_edit'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-id-card-alt"></i>
+                                <p>
+                                    Quản Lí Hồ Sơ Đến
+                                </p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="<?= route('admin.return-profile') ?>"
+                                class="nav-link 
+                            <?= (isRoute(route('admin.return-profile')) || isRoute(route('admin.return-profile_show')) || isRoute(route('admin.return-profile_edit'))|| isRoute(route('admin.return-profile-create'))|| isRoute(route('admin.return-profile_delete'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-id-card-alt"></i>
+                                <p>
+                                    Quản Lí Hồ Sơ Giao Nhận
+                                </p>
+                            </a>
+                        </li>
+
+                        
+                        <li class="nav-item">
+                            <a href="<?= route('admin.certificate') ?>"
+                                class="nav-link <?= (isRoute(route('admin.certificate'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-id-card-alt"></i>
+                                <p>
+                                    Thông tin hồ sơ trả
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="<?= route('admin.sum_link') ?>"
+                                class="nav-link <?= (isRoute(route('admin.sum_link'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-id-card-alt"></i>
+                                <p>
+                                    Quản lý các đường dẫn
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?= route('admin.invoice') ?>"
+                                class="nav-link 
+                            <?= (isRoute(route('admin.invoice')) || isRoute(route('admin.invoice_show')) || isRoute(route('admin.invoice_edit'))|| isRoute(route('admin.invoice-create'))|| isRoute(route('admin.invoice_delete'))) ? 'active' : null ?>">
+                                <i class="nav-icon fas fa-id-card-alt"></i>
+                                <p>
+                                    Quản Lí Đảng Phí
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?= route('admin.profile_type') ?>"
+                                class="nav-link <?= (isRoute(route('admin.profile_type'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-id-card-alt"></i>
                                 <p>
                                     Quản Lí Loại Hồ Sơ
@@ -124,7 +198,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= route('admin.receive_persons') ?>" class="nav-link <?= (isRoute(route('admin.receive_persons'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.receive_persons') ?>"
+                                class="nav-link <?= (isRoute(route('admin.receive_persons'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lí Người Tiếp Nhận
@@ -132,7 +207,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= route('admin.contact_methods') ?>" class="nav-link <?= (isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.contact_methods') ?>"
+                                class="nav-link <?= (isRoute(route('admin.contact_methods'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-headset"></i>
                                 <p>
                                     Quản Lí PT Liên Hệ
@@ -140,7 +216,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= route('admin.organizations') ?>" class="nav-link <?= (isRoute(route('admin.organizations'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.organizations') ?>"
+                                class="nav-link <?= (isRoute(route('admin.organizations'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-building"></i>
                                 <p>
                                     Quản Lí Đơn Vị
@@ -148,7 +225,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= route('admin.branches') ?>" class="nav-link <?= (isRoute(route('admin.branches'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.branches') ?>"
+                                class="nav-link <?= (isRoute(route('admin.branches'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-building"></i>
                                 <p>
                                     Quản Lí Chi Bộ
@@ -156,7 +234,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= route('admin.change_password') ?>" class="nav-link <?= (isRoute(route('admin.change_password'))) ? 'active' : null ?>">
+                            <a href="<?= route('admin.change_password') ?>"
+                                class="nav-link <?= (isRoute(route('admin.change_password'))) ? 'active' : null ?>">
                                 <i class="nav-icon fas fa-key"></i>
                                 <p>
                                     Đổi Mật Khẩu
@@ -202,15 +281,15 @@
         <div class="hidden">
             <?php
             if (isset($_SESSION['notification'])) { ?>
-                <span id="messager"><?= $_SESSION['notification']['messager'] ?></span>
-                <span id="type-mess"><?= $_SESSION['notification']['type'] ?></span>
+            <span id="messager"><?= $_SESSION['notification']['messager'] ?></span>
+            <span id="type-mess"><?= $_SESSION['notification']['type'] ?></span>
             <?php
                 unset($_SESSION['notification']);
             } ?>
             <span></span>
         </div>
     </div>
-   
+
     <div class="dialog" id="loading__js">
         <img src="public/build/images/loading.svg" alt="">
     </div>
@@ -222,7 +301,7 @@
     <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -270,48 +349,48 @@
     <script src="public/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
     <script>
-        $('#reservationdate').datetimepicker({
-            format: 'L'
-        });
-        $(document).ready(function() {
-            let messager = $('#messager').text();
-            let typeMess = $('#type-mess').text();
-            if (messager.length > 0) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-
-                Toast.fire({
-                    icon: typeMess,
-                    title: messager
-                })
-            }
-        })
-
-        $(document).on('click', '#delete-item-btn', function() {
-            Swal.fire({
-                title: '<?= BOX_DELETE['title'] ?>',
-                text: "<?= BOX_DELETE['content'] ?>",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '<?= BOX_DELETE['confirm'] ?>',
-                cancelButtonText: '<?= BOX_DELETE['cancel'] ?>'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $(this).closest('form').submit();
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+    $(document).ready(function() {
+        let messager = $('#messager').text();
+        let typeMess = $('#type-mess').text();
+        if (messager.length > 0) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
             })
-        });
+
+            Toast.fire({
+                icon: typeMess,
+                title: messager
+            })
+        }
+    })
+
+    $(document).on('click', '#delete-item-btn', function() {
+        Swal.fire({
+            title: '<?= BOX_DELETE['title'] ?>',
+            text: "<?= BOX_DELETE['content'] ?>",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '<?= BOX_DELETE['confirm'] ?>',
+            cancelButtonText: '<?= BOX_DELETE['cancel'] ?>'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).closest('form').submit();
+            }
+        })
+    });
     </script>
 </body>
 

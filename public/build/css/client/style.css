@@ -35,15 +35,15 @@ body {
 }
 
 .timeline .active.timeline-item {
-    border-left: 1px solid #4caf50;
+    border-left: 1px solid #014EC4;
 }
 
 .timeline .active.timeline-item:after {
-    background-color: #4caf50;
+    background-color: #ff0000;
 }
 
 .timeline .active.timeline-item>* {
-    color: #4caf50;
+    color: #ff0000;
 }
 
 .timeline .timeline-item>p,
@@ -54,4 +54,8 @@ body {
 .timeline .timeline-item.active>p,
 .timeline .timeline-item.active>pre {
     display: block;
+}
+.strong-heading {
+    font-weight: bold;
+    color: #014EC4;
 }

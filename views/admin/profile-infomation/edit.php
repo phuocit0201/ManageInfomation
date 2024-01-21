@@ -93,11 +93,19 @@
                     </div>
                     <div class="form-group">
                         <label>Chi Tiết Hồ Sơ</label>
-                        <textarea id="" cols="30" rows="10" name="data[name_profile]" class="form-control"><?= $data['profile_infomation']['name_profile'] ?></textarea>
+                        <textarea id="" cols="20" rows="7" name="data[name_profile]" class="form-control"><?= $data['profile_infomation']['name_profile'] ?></textarea>
                     </div>
                     <div class="form-group">
                             <label>Nội dung bổ sung hồ sơ</label>
-                            <textarea id="" cols="30" rows="10" name="data[note]" class="form-control"><?= $data['profile_infomation']['note'] ?></textarea>
+                            <textarea id="" cols="20" rows="7" name="data[note]" class="form-control"><?= $data['profile_infomation']['note'] ?></textarea>
+                    </div>
+                    <div class="form-group" style="color: #e80000">
+                            <label>Ghi chú khi lưu hồ sơ tại Văn phòng</label>
+                            <textarea id="" cols="20" rows="5" name="data[note_return_profile]" class="form-control"><?= $data['profile_infomation']['note_return_profile'] ?></textarea>
+                    </div>
+                    <div class="form-group" style="color: #e80000">
+                            <label>Ghi chú khi đã nhận hồ sơ <i style="color: blue">dành cho trường hợp nhận thay,....</i></label>
+                            <textarea id="" cols="20" rows="5" name="data[note_return_profile2]" class="form-control"><?= $data['profile_infomation']['note_return_profile2'] ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Thời Gian Nộp</label>

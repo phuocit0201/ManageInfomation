@@ -31,23 +31,23 @@
           <div class="row justify-content-center">
             <div class="col-md-6 pe-md-0">
               <div class="auth-page-sidebar overflow-hidden">
-                <div class="overlay"> 
-                <img src="public/asset/hinh3.png" height="800" alt="Lettstart Admin">
+                <div class="overlay">
+                  <img src="public/asset/hinh3.png" height="800" alt="Lettstart Admin">
                 </div>
                 <div class="auth-user-testimonial">
                   <div class="owl-carousel">
-                  <div class="item" style="color: red;">
-                    <h3 class="text-white mb-1" style="color: red !important;">Welcome Admin!</h3>
-                    <h5 class="text-white mb-3" style="color: #014EC4 !important;">"Chào mừng Bạn đến với Trang quản lý Văn bản đến của Văn phòng Đảng ủy
-                      Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh"</h5>
-                    <p style="color: red;">- Văn phòng Đảng ủy -</p>
-                  </div>
-                  <div class="item" style="color: red;">
-                    <h3 class="text-white mb-1" style="color: red !important;">Bye Bye User!</h3>
-                    <h5 class="text-white mb-3" style="color: #014EC4 !important;">"Chúng tôi rất lấy làm tiếc khi bạn không thể truy cập vào Trang quản lý này
-                      . Mọi thắc mắc bạn có thể liên hệ Văn phòng Đảng ủy để được giải quyết trực tiếp nhé ! "</h5>
-                    <p style="color: red;">- Văn phòng Đảng ủy -</p>
-                  </div>
+                    <div class="item" style="color: red;">
+                      <h3 class="text-white mb-1" style="color: red !important;">Welcome Admin!</h3>
+                      <h5 class="text-white mb-3" style="color: #014EC4 !important;">"Chào mừng Bạn đến với Trang quản lý Văn bản đến của Văn phòng Đảng ủy
+                        Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh"</h5>
+                      <p style="color: red;">- Văn phòng Đảng ủy -</p>
+                    </div>
+                    <div class="item" style="color: red;">
+                      <h3 class="text-white mb-1" style="color: red !important;">Bye Bye User!</h3>
+                      <h5 class="text-white mb-3" style="color: #014EC4 !important;">"Chúng tôi rất lấy làm tiếc khi bạn không thể truy cập vào Trang quản lý này
+                        . Mọi thắc mắc bạn có thể liên hệ Văn phòng Đảng ủy để được giải quyết trực tiếp nhé ! "</h5>
+                      <p style="color: red;">- Văn phòng Đảng ủy -</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
                   <div style="display: flex; justify-content: center;">
                     <h5 class="mt-4 fw-semibold" style="color: red !important;">Welcome Admin!</h5>
                   </div>
-                  <form action="<?=route('login')?>" method="post" id="loginForm" novalidate>
+                  <form action="<?= route('login') ?>" method="post" id="loginForm" novalidate>
                     <div class="form-group floating-label">
                       <input type="email" class="form-control form-control-lg" name="username" id="email" />
                       <label for="email">Username</label>
@@ -87,8 +87,8 @@
     <!-- end container -->
   </div>
   <!-- Page End -->
-   <!-- ================== BEGIN BASE JS ================== -->
-   <script src="public/asset/vendor.min.js"></script>
+  <!-- ================== BEGIN BASE JS ================== -->
+  <script src="public/asset/vendor.min.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <!-- ================== END BASE JS ================== -->
 
@@ -121,7 +121,6 @@
         }
       }
     });
-  
   </script>
 </body>
 

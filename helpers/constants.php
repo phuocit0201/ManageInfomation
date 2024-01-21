@@ -40,6 +40,24 @@ const PROFILE_INFOMATION = [
     'show' => 'Chi Tiết Hồ Sơ',
 ];
 
+
+const RETURN_PROFILE = [
+    'title' => 'Quản Lý Hồ Sơ Giao Nhận',
+    'card_title' => 'Nhập thông hồ sơ trả về',
+    'create' => 'Thêm Mới Hồ Sơ Trả Về',
+    'edit' => 'Chỉnh Sửa Hồ Sơ Trả Về',
+    'show' => 'Chi Tiết Hồ Sơ Trả Về',
+];
+
+const INVOICE = [
+    'title' => 'ĐẢNG ỦY - QUẢN LÝ ĐẢNG PHÍ',
+    'card_title' => 'Nhập thông tin người nộp Đảng phí',
+    'create' => 'Thêm Mới Hồ Sơ Trả Về',
+    'edit' => 'Chỉnh Sửa Hồ Sơ Trả Về',
+    'show' => 'Chi Tiết Hồ Sơ Trả Về',
+];
+
+
 const ORGANIZATION = [
     'title' => 'Quản Lý Đơn Vị',
     'card_title' => 'Danh Sách Đơn Vị',
@@ -54,6 +72,25 @@ const BRANCH = [
     'create' => 'Thêm Mới Chi Bộ',
     'edit' => 'Chỉnh Sửa Chi Bộ',
     'show' => 'Chi Tiết Chi Bộ',
+];
+
+const CERTIFICATE = [
+    'title' => 'Quản Lý Giấy Chứng Nhận',
+    'card_title' => 'Danh Sách Giấy Chứng Nhận',
+    'create' => 'Thêm Mới Giấy Chứng Nhận',
+    'edit' => 'Chỉnh Sửa Giấy Chứng Nhận',
+];
+
+const SUM_LINK = [
+    'title' => 'Quản lý các đường dẫn',
+    'card_title' => 'Danh sách các đường dẫn',
+    
+];
+
+const SEARCH = [
+    'title' => 'Dữ liệu Đảng viên',
+    'card_title' => 'TRA CỨU DỮ LIỆU ĐẢNG VIÊN',
+    'show' => 'CHI TIẾT HỒ SƠ',
 ];
 
 const VALIDATE_LOGIN = 'Tài khoản và mật khẩu không được chứa các kí tự đặc biệt';
@@ -106,38 +143,42 @@ const PROFILE_TYPE = [
 
 const STATUS_PROFILE_INFO = [
     [
-        'text' => 'Chờ kiểm duyệt',
+        'text' => 'Hồ sơ chờ Văn phòng Đảng ủy kiểm duyệt',
         'value' => 1
     ],
     [
-        'text' => 'Đã nhận hồ sơ',
+        'text' => 'Văn phòng Đảng ủy đã nhận hồ sơ',
         'value' => 2
     ],
     [
-        'text' => 'Đang xử lý',
+        'text' => 'Văn phòng Đảng ủy đang xử lý hồ sơ',
         'value' => 3
     ],
+
     [
-        'text' => 'Trả hồ sơ về',
+        'text' => 'Văn phòng Đảng ủy yêu cầu chỉnh sửa và bổ sung hồ sơ',
         'value' => 4
     ],
+
     [
-        'text' => 'Chỉnh sửa và bổ sung',
+        'text' => 'Văn phòng Đảng ủy trả hồ sơ về',
         'value' => 5
     ],
+
     [
-        'text' => 'Đã nhận lại Hồ sơ từ VPĐU',
+        'text' => 'Đã nhận lại Hồ sơ từ Văn phòng Đảng ủy',
         'value' => 6
     ],
     [
-        'text' => 'Hoàn tất hồ sơ và lưu tại văn phòng',
+        'text' => 'Hoàn tất hồ sơ và lưu tại Văn phòng Đảng ủy',
         'value' => 7
     ],
 ];
 
 const NAME_PROFILE_EXCEL = 'HOSO.xlsx';
 
-const SUBJECT_RECEIVED_PROFILE = 'Đã Nhận Hồ Sơ';
-const SUBJECT_EDIT_PROFILE = 'Chỉnh Sửa Và Bổ Sung Hồ Sơ';
-const SUBJECT_COMPLETED_PROFILE = 'Hoàn Tất Hồ Sơ';
-const SUBJECT_PROFILE = 'Nộp Hồ Sơ Thành Công';
+const SUBJECT_RECEIVED_PROFILE = 'VĂN PHÒNG ĐẢNG ỦY XÁC NHẬN BẠN ĐÃ NHẬN LẠI HỒ SƠ';
+const SUBJECT_RECEIVED_PROFILE4 = '[VĂN PHÒNG ĐẢNG ỦY] THÔNG BÁO VỀ VIỆC NHẬN HỒ SƠ';
+const SUBJECT_EDIT_PROFILE = 'VĂN PHÒNG ĐẢNG ỦY THÔNG TIN CHỈNH SỬA VÀ BỔ SUNG HỒ SƠ';
+const SUBJECT_COMPLETED_PROFILE = 'VĂN PHÒNG ĐẢNG ỦY THÔNG BÁO HỒ SƠ ĐÃ HOÀN TẤT ';
+const SUBJECT_PROFILE = 'VĂN PHÒNG ĐẢNG ỦY XÁC NHẬN BẠN ĐÃ NỘP HỒ SƠ';

@@ -129,7 +129,7 @@ class ProfileInfomation extends Controller
         $this->title = PROFILE_INFOMATION['edit'];
         $this->view('admin/masterlayout', $data);
     }
-
+    
     public function update()
     {
         $id = $_POST['data']['id'] ?? null;
@@ -291,7 +291,7 @@ class ProfileInfomation extends Controller
                 $data['date_1'] = (empty($profile['date_1'])) ? $currentTime : $profile['date_1'];
                 $data['date_2'] = (empty($profile['date_2'])) ? $currentTime : $profile['date_2'];
                 $data['date_3'] = (empty($profile['date_3'])) ? $currentTime : $profile['date_3'];
-                $data['date_4'] = (empty($profile['date_4'])) ? $currentTime : $profile['date_4'];
+                $data['date_4'] = null;
                 $data['date_5'] = null;
                 $data['date_6'] = $currentTime;
                 return $data;
@@ -305,13 +305,20 @@ class ProfileInfomation extends Controller
             case STATUS_PROFILE_INFO[0]['value']:
             case STATUS_PROFILE_INFO[1]['value']:
             case STATUS_PROFILE_INFO[2]['value']:
-            case STATUS_PROFILE_INFO[3]['value']:
                 return;
-            case STATUS_PROFILE_INFO[4]['value']:
+            case STATUS_PROFILE_INFO[3]['value']:
                 $body = $this->renderHtmlEditProfile($data);
                 $emailContent = [
                     'email' => $data['email'],
                     'subject' => SUBJECT_EDIT_PROFILE,
+                    'body' => $body
+                ];
+                break;
+            case STATUS_PROFILE_INFO[4]['value']:
+                $body = $this->renderHtmlReceivedProfile4($data);
+                $emailContent = [
+                    'email' => $data['email'],
+                    'subject' => SUBJECT_RECEIVED_PROFILE4,
                     'body' => $body
                 ];
                 break;
@@ -327,7 +334,7 @@ class ProfileInfomation extends Controller
                 $body = $this->renderHtmlSaveProfile($data);
                 $emailContent = [
                     'email' => $data['email'],
-                    'subject' => SUBJECT_RECEIVED_PROFILE,
+                    'subject' => SUBJECT_COMPLETED_PROFILE,
                     'body' => $body
                 ];
                 break;
@@ -346,10 +353,11 @@ class ProfileInfomation extends Controller
                         <h3 style="color: #014EC4; font-size: 18px;"> ĐẢNG ỦY TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT THÀNH PHỐ HỒ CHÍ MINH</h3>
                     </div>
                     <div>
-                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào Đ/C '. $data['name'] .'</p>
-                        <p style="color: #014EC4; font-size: 16px;">Văn phòng Đảng ủy đã nhận và kiểm tra hồ sơ của Đồng Chí và có yêu cầu Đ/C chỉnh sửa và bổ sung chi tiết như sau: sau</p>
-                        <pre style="color: #e80000; font-size: 16px;">'. $data['note'] .'</pre>
-                        <p style="color: #014EC4; font-size: 16px;">Các Đ/C lưu ý bổ sung các nội dung được nêu trên về văn phòng Đảng ủy để có thể hoàn thiện hồ sơ.</p>
+                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào đồng chí '. $data['full_name'] .'</p>
+                        <p style="color: #014EC4; font-size: 16px;">Văn phòng Đảng ủy đã nhận và kiểm tra hồ sơ của đồng chí và có yêu cầu chỉnh sửa và bổ sung về hồ sơ có mã số <b>'. $data['id'] .' </b> chi tiết như sau:</p>
+                        <pre style="color: #e80000; font-size: 16px; text-align: justify;">'. $data['note'] .'</pre>
+                        <p><span style="color: #014EC4; font-size: 16px;">Truy cập trang để xem chi tiết:</span><a " href="https://vanphongdanguy.hcmute.edu.vn/tra-cuu-thong-tin?search=' . $data['id'] . '" style="color: red; font-size: 16px; text-decoration: none"> Trang Tra Cứu Hồ Sơ <i>(Nhấn vào đây)</i> </a></p>
+                        <p style="color: #014EC4; font-size: 16px;">Đ/c lưu ý bổ sung các nội dung được nêu trên về văn phòng Đảng ủy để có thể hoàn thiện hồ sơ.</p>
                         <p style="color: #014EC4; font-size: 16px;">Trân trọng./.</p>
                     </div>
                     <div>
@@ -360,11 +368,12 @@ class ProfileInfomation extends Controller
                         <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Điện thoại:</span>02837221223(8231)</p>
                         <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Cá nhân:</span> 0961159192(Mr.Đức) - 0983199982(Ms.Nam)</p>
                         <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Website:</span> dangbo.hcmute.edu.vn</p>
+                    
                     </div>
                 </div>
             </div>';
     }
-
+    
     private function renderHtmlReceivedProfile($data)
     {
         return '
@@ -375,10 +384,12 @@ class ProfileInfomation extends Controller
                     <h3 style="color: #014EC4; font-size: 18px;"> ĐẢNG ỦY TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT THÀNH PHỐ HỒ CHÍ MINH</h3>
                     </div>
                     <div>
-                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào Đ/C '. $data['full_name'] .'</p>
-                        <p style="color: #888; font-size: 16px;">Văn phòng Đảng ủy <b>xác nhận</b> Đ/C đã nhận lại hồ sơ từ VPĐU với mã hồ sơ là '. $data['id'] .' tại Văn phòng Đảng ủy vào lúc '. $data['date_5'] .'</p>
-                        <p style="color: blue; font-size: 16px;"><i>Mọi thắc mắc về hồ sơ có thể liên hệ trực tiếp Văn phòng Đảng ủy</i></p>
-                        <p style="color: #888; font-size: 16px;">Trân trọng</p>
+                    <p style="color: #014EC4; font-size: 16px;">Chào đồng chí ' . $data['full_name'] . ';</p>
+                        <p style="color: #888; font-size: 16px;">Văn phòng Đảng ủy <b>xác nhận</b> đồng chí đã nhận lại hồ sơ từ Văn phòng Đảng ủy với mã hồ sơ là '. $data['id'] .' tại văn phòng vào lúc '. $data['date_5'] .'</p>
+                        <pre style="color: #e80000; font-size: 16px; text-align: justify;">'. $data['note_return_profile2'] .'</pre>
+                        <p><span style="color: #014EC4; font-size: 16px;">Truy cập trang để xem chi tiết:</span><a " href="https://vanphongdanguy.hcmute.edu.vn/tra-cuu-thong-tin?search=' . $data['id'] . '" style="color: red; font-size: 16px; text-decoration: none"> Trang Tra Cứu Hồ Sơ <i>(Nhấn vào đây)</i> </a></p>
+                        <p style="color: blue; font-size: 16px;"><i>Mọi thắc mắc về hồ sơ đồng chí có thể liên hệ trực tiếp Văn phòng Đảng ủy Trường</i></p>
+                        <p style="color: #888; font-size: 16px;">Trân trọng./.</p>
                     </div>
                     <div>
                         <h3 style="color: #e80000; font-size: 18px;">VĂN PHÒNG ĐẢNG ỦY</h3>
@@ -388,6 +399,41 @@ class ProfileInfomation extends Controller
                         <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Điện thoại:</span>02837221223(8231)</p>
                         <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Cá nhân:</span> 0961159192(Mr.Đức) - 0983199982(Ms.Nam)</p>
                         <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Website:</span> dangbo.hcmute.edu.vn</p>
+                </div>
+                </div>
+            </div>';
+    }
+
+    private function renderHtmlReceivedProfile4($data)
+    {
+        return '
+            <div style="width: 100%;background: #fafafa;padding: 50px 0px;">
+                <div style="max-width: 700px; border: 1px solid #999; padding: 20px;margin: 0 auto;background: #fff;">
+                    <div style="text-align: center;">
+                    <h3 style="color: #e80000; font-size: 17px;"> ĐẢNG BỘ KHỐI ĐẠI HỌC, CAO ĐẲNG TP. HỒ CHÍ MINH</h3>
+                    <h3 style="color: #014EC4; font-size: 18px;"> ĐẢNG ỦY TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT THÀNH PHỐ HỒ CHÍ MINH</h3>
+                    </div>
+                    <div>
+                    <p style="color: #014EC4; font-size: 16px;">Chào đồng chí ' . $data['full_name'] . ';</p>
+                        <p style="color: #014EC4; font-size: 16px;">Văn phòng Đảng ủy thông báo đến đồng chí về việc tiếp nhận hồ sơ với thông tin cụ thể như sau:</p>
+                        <p style="color: #014EC4; font-size: 16px;"> <b> - Mã số hồ sơ: '. $data['id'] .' <b> </p>
+                        <p style="color: #014EC4; font-size: 16px;"> <b> - Loại hồ sơ: '. $data['type_profile'] .' <b> </p>
+                        <p style="color: #014EC4; font-size: 16px;"> <b> - Thông tin chi tiết: </p>
+                        <pre style="color: #e80000; font-size: 16px;text-align: justify;"> '. $data['name_profile'] .'</pre>
+                        <p style="color: #014EC4; font-size: 16px;"> <b> - Địa điểm: Văn phòng Đảng ủy trường <b> </p>
+                        <p style="color: #014EC4; font-size: 16px; text-align: justify;"><i>  - Lưu ý: Đồng chí nhanh chóng liên hệ Văn phòng Đảng ủy trường để tiếp nhận hồ sơ trong vòng 05 ngày làm việc kể từ ngày nhận được thông báo này. 
+                        Khi đến, đồng chí vui lòng cung cấp mã số hồ sơ hoặc xuất trình giấy tờ cá nhân để kiểm tra hồ sơ được trả</i></p>
+                        <p style="color: #014EC4; font-size: 16px;">Trân trọng./.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: #e80000; font-size: 18px;">VĂN PHÒNG ĐẢNG ỦY</h3>
+                        <p style="color: #014EC4; font-weight: 600;font-size: 16px;">Trường Đại học Sư phạm Kỹ thuật Hồ Chí Minh</p>
+                        <p style="color: #014EC4; font-weight: 600;font-size: 16px;">Phòng A1001 - Tầng 10 Tòa nhà trung tâm</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Email:</span> vp_danguy@hcmute.edu.vn</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Điện thoại:</span>02837221223(nhánh 8231)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue;">Cá nhân:</span> 096.115.9192(Mr.Đức) - 098.319.9982(Ms.Nam)</p>
+                        <p style="color: #888; font-weight: 400;font-size: 16px;"><span style="color: blue; text-decoration: none;">Website:</span> dangbo.hcmute.edu.vn</p>
+                        <p><span style="color: #014EC4; font-size: 16px;">Truy cập trang để xem chi tiết:</span><a " href="https://vanphongdanguy.hcmute.edu.vn/tra-cuu-thong-tin?search=' . $data['id'] . '" style="color: red; font-size: 16px; text-decoration: none"> Trang Tra Cứu Hồ Sơ <i>(Nhấn vào đây)</i> </a></p>
                 </div>
                 </div>
             </div>';
@@ -403,10 +449,12 @@ class ProfileInfomation extends Controller
                     <h3 style="color: #014EC4; font-size: 18px;"> ĐẢNG ỦY TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT THÀNH PHỐ HỒ CHÍ MINH</h3>
                     </div>
                     <div>
-                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào Đ/C '. $data['full_name'] .'</p>
-                        <p style="color: #888; font-size: 16px;">Văn phòng Đảng ủy <b>Đã tiếp nhận và xử lý hoàn thành hồ sơ của Đ/C</b> với mã hồ sơ là '. $data['id'] .'. <b>Hồ sơ đã được lưu giữ tại</b> Văn phòng Đảng ủy vào lúc '. $data['date_6'] .'</p>
-                        <p style="color: blue; font-size: 16px;"><i>Mọi thắc mắc về hồ sơ có thể liên hệ trực tiếp Văn phòng Đảng ủy</i></p>
-                        <p style="color: #888; font-size: 16px;">Trân trọng</p>
+                        <p style="color: red; font-size: 18px; font-weight: 600;">Chào đồng chí '. $data['full_name'] .'</p>
+                        <p style="color: #888; font-size: 16px;">Văn phòng Đảng ủy <b> đã tiếp nhận và xử lý hoàn thành hồ sơ của đồng chí</b> với mã hồ sơ là '. $data['id'] .'. <b>Hồ sơ đã được lưu giữ tại</b> văn phòng vào lúc '. $data['date_6'] .'</p>
+                        <pre style="color: #e80000; font-size: 16px; text-align: justify;">'. $data['note_return_profile'] .'</pre>
+                        <p><span style="color: #014EC4; font-size: 16px;">Truy cập trang để xem chi tiết:</span><a " href="https://vanphongdanguy.hcmute.edu.vn/tra-cuu-thong-tin?search=' . $data['id'] . '" style="color: red; font-size: 16px; text-decoration: none"> Trang Tra Cứu Hồ Sơ <i>(Nhấn vào đây)</i> </a></p>
+                        <p style="color: blue; font-size: 16px;"><i>Mọi thắc mắc về hồ sơ đồng chí có thể liên hệ trực tiếp Văn phòng Đảng ủy Trường</i></p>
+                        <p style="color: #888; font-size: 16px;">Trân trọng./.</p>
                     </div>
                     <div>
                         <h3 style="color: #e80000; font-size: 18px;">VĂN PHÒNG ĐẢNG ỦY</h3>

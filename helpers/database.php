@@ -147,18 +147,23 @@ class Database
 
     public function update($data, $attributes = [])
     {
-        $sql = "update $this->model set ";
-        foreach ($data as $key => $value) {
-            $sql .= $key . " = '" . $value . "',";
+        try {
+            $sql = "update $this->model set ";
+            foreach ($data as $key => $value) {
+                $sql .= $key . " = '" . $value . "',";
+            }
+            $sql = substr($sql, 0, strlen($sql) - 1);
+            $sql .= " where ";
+            foreach ($attributes as $key => $attribute) {
+                $sql .= $key . " = '" . $attribute . "' and ";
+            }
+            $sql = substr($sql, 0, strlen($sql) - 4);
+            $this->ExecuteSql($sql);
+            return true;
+        } catch (Exception $e) {
+            return false;
         }
-        $sql = substr($sql, 0, strlen($sql) - 1);
-        $sql .= " where ";
-        foreach ($attributes as $key => $attribute) {
-            $sql .= $key . " = '" . $attribute . "' and ";
-        }
-        $sql = substr($sql, 0, strlen($sql) - 4);
-        $this->ExecuteSql($sql);
-        return true;
+        
     }
 
     public function delete($attributes = [])

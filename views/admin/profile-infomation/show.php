@@ -55,12 +55,24 @@
                         <label>Chi Tiết Hồ Sơ</label>
                         <textarea id="" cols="30" rows="10" disabled class="form-control"><?= $data['profile_infomation']['name_profile'] ?></textarea>
                     </div>
+
                     <?php if (!empty($data['profile_infomation']['note'])) { ?>
                         <div class="form-group">
                             <label>Nội dung bổ sung hồ sơ</label>
                             <textarea cols="30" rows="10" type="text" disabled class="form-control"><?= $data['profile_infomation']['note'] ?></textarea>
                         </div>
                     <?php } ?>
+
+                    <div class="form-group">
+                        <label style="color: #e80000">Ghi chú khi lưu hồ sơ tại văn phòng Đảng ủy </label>
+                        <textarea id="" cols="10" rows="5" disabled class="form-control"><?= $data['profile_infomation']['note_return_profile'] ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #e80000">Ghi chú khi nhận hồ sơ từ Văn phòng Đảng ủy</label>
+                        <textarea id="" cols="10" rows="5" disabled class="form-control"><?= $data['profile_infomation']['note_return_profile2'] ?></textarea>
+                    </div>
+
+
                     <div class="text-center" style="padding: 10px;">
                         <a href="<?= route('admin.profile_infomation') ?>" class="btn btn-primary" style="margin-right: 30px;">Quay Về</a>
                         <a href="<?= route('admin.profile_infomation_edit') . "?id=" . $data['profile_infomation']['id'] ?>" class="btn btn-primary">Chỉnh Sửa</a>

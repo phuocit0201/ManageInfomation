@@ -1,8 +1,8 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 col-6">
 
+            <div class="col-lg-4 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3><?= $data['statistical'][STATUS_PROFILE_INFO[0]['value']] ?? 0 ?></h3>
@@ -41,23 +41,9 @@
             </div>
 
             <div class="col-lg-4 col-6">
-
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3><?= $data['statistical'][STATUS_PROFILE_INFO[3]['value']] ?? 0 ?></h3>
-                        <p>Tổng hồ sơ trả về</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-6">
-
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3><?= $data['statistical'][STATUS_PROFILE_INFO[4]['value']] ?? 0 ?></h3>
+                        <h3><?= $data['statistical'][STATUS_PROFILE_INFO[3]['value']] ?? 0 ?></h3>
                         <p>Tổng hồ sơ chỉnh sửa và bổ sung</p>
                     </div>
                     <div class="icon">
@@ -67,7 +53,18 @@
             </div>
 
             <div class="col-lg-4 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3><?= $data['statistical'][STATUS_PROFILE_INFO[4]['value']] ?? 0 ?></h3>
+                        <p>Tổng hồ sơ trả về</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-lg-4 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3><?= $data['statistical'][STATUS_PROFILE_INFO[5]['value']] ?? 0 ?></h3>
@@ -78,6 +75,19 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-4 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3><?= $data['statistical'][STATUS_PROFILE_INFO[6]['value']] ?? 0 ?></h3>
+                        <p>Tổng hồ sơ hoàn tất và lưu lại VPĐU</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                </div>
+            </div>
+               
             <div class="col-md-12">
                 <!-- STACKED BAR CHART -->
                 <form action="" method="get" class="input-group mb-3">
@@ -120,8 +130,8 @@
         var areaChartData = {
             labels: days,
             datasets: [{
-                label: 'Hồ Sơ',
-                backgroundColor: 'rgba(60,141,188,0.9)',
+                label: 'Hồ sơ theo ngày',
+                backgroundColor: 'rgba(255, 0, 0, 1)',
                 borderColor: 'rgba(60,141,188,0.8)',
                 pointRadius: false,
                 pointColor: 'rgba(210, 214, 222, 1)',

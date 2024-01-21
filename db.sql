@@ -42,7 +42,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `full_name`, `username`, `password`, `active`, `created_at`) VALUES
 (1, 'Administrator', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, '2023-07-18 00:12:56');
-
 --
 -- Chỉ mục cho các bảng đã đổ
 --
